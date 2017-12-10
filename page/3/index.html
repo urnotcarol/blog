@@ -257,6 +257,229 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="//carolunar.com/2017/03/18/ccf-201612-3-authorization/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Carolunar">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/blogImg/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Carol的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/18/ccf-201612-3-authorization/" itemprop="url">CCF 201612-3 权限查询 题解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-18T22:04:17+08:00">
+                2017-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>链接不好贴，直接把完整题目拷贝过来吧：</p>
+<blockquote>
+<p><div class="pdsec">问题描述</div></p>
+<p><div class="pdcont">　　授权 (authorization) 是各类业务系统不可缺少的组成部分，系统用户通过授权机制获得系统中各个模块的操作权限。</div></p>
+<p>本题中的授权机制是这样设计的：每位用户具有若干角色，每种角色具有若干权限。例如，用户 david 具有 manager 角色，manager 角色有 crm:2 权限，则用户 david 具有 crm:2 权限，也就是 crm 类权限的第 2 等级的权限。</p>
+<p>具体地，用户名和角色名称都是由小写字母组成的字符串，长度不超过 32。权限分为分等级权限和不分等级权限两大类。分等级权限由权限类名和权限等级构成，中间用冒号“:”分隔。其中权限类名也是由小写字母组成的字符串，长度不超过 32。权限等级是一位数字，从 0 到 9，数字越大表示权限等级越高。系统规定如果用户具有某类某一等级的权限，那么他也将自动具有该类更低等级的权限。例如在上面的例子中，除 crm:2 外，用户 david 也具有 crm:1 和 crm:0 权限。不分等级权限在描述权限时只有权限类名，没有权限等级（也没有用于分隔的冒号）。</p>
+<p>给出系统中用户、角色和权限的描述信息，你的程序需要回答多个关于用户和权限的查询。查询可分为以下几类：</p>
+<ul>
+<li><p>不分等级权限的查询：如果权限本身是不分等级的，则查询时不指定等级，返回是否具有该权限；</p>
+</li>
+<li><p>分等级权限的带等级查询：如果权限本身分等级，查询也带等级，则返回是否具有该类的该等级权限；</p>
+</li>
+<li><p>分等级权限的不带等级查询：如果权限本身分等级，查询不带等级，则返回具有该类权限的等级；如果不具有该类的任何等级权限，则返回“否”。</p>
+</li>
+</ul>
+<p><div class="pdsec">输入格式</div></p>
+<p><div class="pdcont">　　输入第一行是一个正整数 p，表示不同的权限类别的数量。紧接着的 p 行被称为 P 段，每行一个字符串，描述各个权限。对于分等级权限，格式为 <category&gt;:&lt;level&gt;，其中 &lt;category&gt;="" 是权限类名，&lt;level=""> 是该类权限的最高等级。对于不分等级权限，字符串只包含权限类名。</category&gt;:&lt;level&gt;，其中></div></p>
+<p>接下来一行是一个正整数 r，表示不同的角色数量。紧接着的 r 行被称为 R 段，每行描述一种角色，格式为</p>
+<role&gt; &lt;s&gt;="" &lt;privilege="" 1&gt;="" 2&gt;="" ...="" s="">
+
+<p>其中 <role&gt; 是角色名称，&lt;s&gt;="" 表示该角色具有多少种权限。后面="" &lt;s=""> 个字符串描述该角色具有的权限，格式同 P 段。</role&gt;></p>
+<p>接下来一行是一个正整数 u，表示用户数量。紧接着的 u 行被称为 U 段，每行描述一个用户，格式为</p>
+<user&gt; &lt;t&gt;="" &lt;role="" 1&gt;="" 2&gt;="" ...="" t="">
+
+<p>其中 <user&gt; 是用户名，&lt;t&gt;="" 表示该用户具有多少种角色。后面="" &lt;t=""> 个字符串描述该用户具有的角色。</user&gt;></p>
+<p>接下来一行是一个正整数 q，表示权限查询的数量。紧接着的 q 行被称为 Q 段，每行描述一个授权查询，格式为 <user&gt; &lt;privilege&gt;，表示查询用户="" &lt;user&gt;="" 是否具有="" &lt;privilege&gt;="" 权限。如果查询的权限是分等级权限，则查询中的="" &lt;privilege=""> 可指定等级，表示查询该用户是否具有该等级的权限；也可以不指定等级，表示查询该用户具有该权限的等级。对于不分等级权限，只能查询该用户是否具有该权限，查询中不能指定等级。</user&gt;></p>
+<p><div class="pdsec">输出格式</div></p>
+<p><div class="pdcont">　　输出共 q 行，每行为 false、true，或者一个数字。false 表示相应的用户不具有相应的权限，true 表示相应的用户具有相应的权限。对于分等级权限的不带等级查询，如果具有权限，则结果是一个数字，表示该用户具有该权限的（最高）等级。如果用户不存在，或者查询的权限没有定义，则应该返回 false。</div></p>
+<p><div class="pdsec">样例输入</div></p>
+<p><div class="pddata">3</div></p>
+<p>crm:2</p>
+<p>git:3</p>
+<p>game</p>
+<p>4</p>
+<p>hr 1 crm:2</p>
+<p>it 3 crm:1 git:1 game</p>
+<p>dev 2 git:3 game</p>
+<p>qa 1 git:2</p>
+<p>3</p>
+<p>alice 1 hr</p>
+<p>bob 2 it qa</p>
+<p>charlie 1 dev</p>
+<p>9</p>
+<p>alice game</p>
+<p>alice crm:2</p>
+<p>alice git:0</p>
+<p>bob git</p>
+<p>bob poweroff</p>
+<p>charlie game</p>
+<p>charlie crm</p>
+<p>charlie git:3</p>
+<p>malice game</p>
+<p><div class="pdsec">样例输出</div></p>
+<p><div class="pddata">false</div></p>
+<p>true</p>
+<p>false</p>
+<p>2</p>
+<p>false</p>
+<p>true</p>
+<p>false</p>
+<p>true</p>
+<p>false</p>
+<p><div class="pdsec">样例说明</div></p>
+<p><div class="pdcont">　　样例输入描述的场景中，各个用户实际的权限如下：</div></p>
+<ul>
+<li><p>用户 alice 具有 crm:2 权限</p>
+</li>
+<li><p>用户 bob 具有 crm:1、git:2 和 game 权限</p>
+</li>
+<li><p>用户 charlie 具有 git:3 和 game 权限</p>
+</li>
+<li><p>用户 malice 未描述，因此不具有任何权限</p>
+</li>
+</ul>
+<p><div class="pdsec">评测用例规模与约定</div></p>
+<p><div class="pdcont">　　评测用例规模：</div></p>
+<ul>
+<li><p>1 ≤ p, r, u ≤ 100</p>
+</li>
+<li><p>1 ≤ q ≤ 10 000</p>
+</li>
+<li><p>每个用户具有的角色数不超过 10，每种角色具有的权限种类不超过 10</p>
+</li>
+</ul>
+<p>约定：</p>
+<ul>
+<li>输入保证合法性，包括：</li>
+</ul>
+<p>1) 角色对应的权限列表（R 段）中的权限都是之前（P 段）出现过的，权限可以重复出现，如果带等级的权限重复出现，以等级最高的为准</p>
+<p>2) 用户对应的角色列表（U 段）中的角色都是之前（R 段）出现过的，如果多个角色都具有某一分等级权限，以等级最高的为准</p>
+<p>3) 查询（Q 段）中的用户名和权限类名不保证在之前（U 段和 P 段）出现过</p>
+<ul>
+<li><p>前 20% 的评测用例只有一种角色</p>
+</li>
+<li><p>前 50% 的评测用例权限都是不分等级的，查询也都不带等级</p>
+</li>
+</ul>
+<p><div class="pdcont"><br>&nbsp;</div></p>
+</user&gt;></role&gt;></blockquote>
+<p>上次认证的题目，当时 C++ 太手生，数组都写不顺……自然没做出来。明天要再考一次，临时抱佛脚…做了一下，做出来了。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>觉得没有涉及什么算法，是考对 C++ 的结构体/类/OO 的运用，以及脑子里自带的栈的使用…从来没有写过圈复杂度这么高的。</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_L = <span class="number">32</span> + <span class="number">4</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">100</span> + <span class="number">4</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_Q = <span class="number">10000</span> + <span class="number">4</span>;</span><br><span class="line"><span class="keyword">int</span> p;</span><br><span class="line"><span class="keyword">int</span> r;</span><br><span class="line"><span class="keyword">int</span> u;</span><br><span class="line"><span class="keyword">int</span> q;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Privilege</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">string</span> category;</span><br><span class="line">    <span class="keyword">int</span> level;</span><br><span class="line">    Privilege () &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    Privilege (<span class="built_in">string</span> input) &#123;</span><br><span class="line">        <span class="keyword">char</span> tempL = input[input.length() - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span> (tempL &lt;= <span class="string">'9'</span> &amp;amp;&amp;amp; tempL &gt;= <span class="string">'0'</span>) &#123;</span><br><span class="line">            category = input.substr(<span class="number">0</span>, input.length() - <span class="number">2</span>);</span><br><span class="line">            level = tempL - <span class="string">'0'</span>;</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            category = input;</span><br><span class="line">            level = <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; pri[MAX_N];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Role</span> &#123;</span></span><br><span class="line">    <span class="built_in">string</span> rolename;</span><br><span class="line">    <span class="keyword">int</span> s;</span><br><span class="line">    Privilege myPri[MAX_N];</span><br><span class="line">&#125; role[MAX_N];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">User</span> &#123;</span></span><br><span class="line">    <span class="built_in">string</span> username;</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">    <span class="built_in">string</span> myRole[MAX_N];</span><br><span class="line">&#125; user[MAX_N];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Query</span> &#123;</span></span><br><span class="line">    <span class="built_in">string</span> username;</span><br><span class="line">    Privilege myPri;</span><br><span class="line">&#125; query[MAX_Q];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;amp;p);    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; p; i++) &#123;</span><br><span class="line">        <span class="built_in">string</span> tempP;</span><br><span class="line">        <span class="built_in">cin</span> &amp;gt;&amp;gt; tempP;</span><br><span class="line">        <span class="function">Privilege <span class="title">temp</span><span class="params">(tempP)</span></span>;</span><br><span class="line">        pri[i] = temp;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;amp;r);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; r; i++) &#123;</span><br><span class="line">        <span class="built_in">cin</span> &amp;gt;&amp;gt; role[i].rolename &amp;gt;&amp;gt; role[i].s;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &amp;lt; role[i].s; j++) &#123;</span><br><span class="line">            <span class="built_in">string</span> tempP;</span><br><span class="line">            <span class="built_in">cin</span> &amp;gt;&amp;gt; tempP;</span><br><span class="line">            <span class="function">Privilege <span class="title">temp</span><span class="params">(tempP)</span></span>;</span><br><span class="line">            role[i].myPri[j] = temp;     </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;amp;u);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; u; i++) &#123;</span><br><span class="line">        <span class="built_in">cin</span> &amp;gt;&amp;gt; user[i].username &amp;gt;&amp;gt; user[i].t;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &amp;lt; user[i].t; j++) &#123;</span><br><span class="line">            <span class="built_in">cin</span> &amp;gt;&amp;gt; user[i].myRole[j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;amp;q);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; q; i++) &#123;</span><br><span class="line">        <span class="built_in">string</span> tempP;</span><br><span class="line">        <span class="built_in">cin</span> &amp;gt;&amp;gt; query[i].username &amp;gt;&amp;gt; tempP;</span><br><span class="line">        <span class="function">Privilege <span class="title">temp</span><span class="params">(tempP)</span></span>;</span><br><span class="line">        query[i].myPri = temp;</span><br><span class="line">        <span class="keyword">bool</span> validUser = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">bool</span> validPri = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">bool</span> done = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &amp;lt; u; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (user[j].username == query[i].username) &#123;</span><br><span class="line">                validUser = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">int</span> maxLevel = <span class="number">-1</span>;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &amp;lt; user[j].t; k++) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (done) &#123;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;                    </span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">0</span>; x &amp;lt; r; x++) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (role[x].rolename == user[j].myRole[k]) &#123;</span><br><span class="line">                            <span class="keyword">for</span> (<span class="keyword">int</span> y = <span class="number">0</span>; y &amp;lt; role[x].s; y++) &#123;</span><br><span class="line">                                <span class="keyword">if</span> (role[x].myPri[y].category == query[i].myPri.category) &#123;             </span><br><span class="line">                                    validPri = <span class="literal">true</span>;                       </span><br><span class="line">                                    <span class="keyword">if</span> (role[x].myPri[y].level == <span class="number">-1</span>) &#123;  </span><br><span class="line">                                        <span class="built_in">cout</span> &amp;lt;&amp;lt; <span class="string">"true"</span> &amp;lt;&amp;lt; <span class="built_in">endl</span>;</span><br><span class="line">                                        done = <span class="literal">true</span>;</span><br><span class="line">                                        <span class="keyword">break</span>;</span><br><span class="line">                                    &#125;</span><br><span class="line">                                    <span class="keyword">else</span> <span class="keyword">if</span> (role[x].myPri[y].level &amp;gt; <span class="number">-1</span>) &#123;</span><br><span class="line">                                        maxLevel = max(maxLevel, role[x].myPri[y].level);</span><br><span class="line">                                    &#125;</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (!done &amp;amp;&amp;amp; validPri) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (query[i].myPri.level == <span class="number">-1</span>) &#123;</span><br><span class="line">                        <span class="built_in">cout</span> &amp;lt;&amp;lt; maxLevel &amp;lt;&amp;lt; <span class="built_in">endl</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (query[i].myPri.level &amp;lt;= maxLevel) &#123;</span><br><span class="line">                        <span class="built_in">cout</span> &amp;lt;&amp;lt; <span class="string">"true"</span> &amp;lt;&amp;lt; <span class="built_in">endl</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="built_in">cout</span> &amp;lt;&amp;lt; <span class="string">"false"</span> &amp;lt;&amp;lt; <span class="built_in">endl</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;    </span><br><span class="line">        <span class="keyword">if</span> (!validUser || !validPri) &#123;</span><br><span class="line">            <span class="built_in">cout</span> &amp;lt;&amp;lt; <span class="string">"false"</span> &amp;lt;&amp;lt; <span class="built_in">endl</span>;</span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="知识水平"><a href="#知识水平" class="headerlink" title="知识水平"></a>知识水平</h2><p>C++  String 类自带的截取函数：substring(index, length). 表示从 index 表示的位置开始截取长度为 length 的字符。</p>
+<p>另外从这道题开始把数组多开的那几个直接写到预定义的 MAX 值里面了，更直观也更方便。</p>
+<table class="prtable" width="100%" cellspacing="1" cellpadding="0" align="center"><br><tbody><br><tr class="thead"><br><th><span style="font-size: 10pt;">提交编号</span></th><br><th><span style="font-size: 10pt;">试题名称</span></th><br><th><span style="font-size: 10pt;">提交时间</span></th><br><th><span style="font-size: 10pt;">代码长度</span></th><br><th><span style="font-size: 10pt;">编程语言</span></th><br><th><span style="font-size: 10pt;">评测结果</span></th><br><th><span style="font-size: 10pt;">得分</span></th><br><th><span style="font-size: 10pt;">时间使用</span></th><br><th><span style="font-size: 10pt;">空间使用</span></th><br></tr><br><tr><br><td><span style="font-size: 10pt;">325436</span></td><br><td class="pname"><span style="font-size: 10pt;"><a href="http://118.190.20.162/view.page?gpid=T50" target="_blank" rel="noopener">权限查询</a></span></td><br><td><span style="font-size: 10pt;">03-17 22:02</span></td><br><td><span style="font-size: 10pt;">3.621KB</span></td><br><td><span style="font-size: 10pt;">C++</span></td><br><td><span class="Color_AC" style="font-size: 10pt;">正确</span></td><br><td><span style="font-size: 10pt;">100</span></td><br><td><span style="font-size: 10pt;">203ms</span></td><br><td><span style="font-size: 10pt;">4.382MB</span></td><br></tr><br></tbody><br></table>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="//carolunar.com/2017/03/18/uva-10004-bicoloring/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1371,132 +1594,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="//carolunar.com/2017/03/10/poj-1631-bridging-signals/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Carolunar">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/blogImg/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Carol的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/03/10/poj-1631-bridging-signals/" itemprop="url">POJ 1631 Bridging signals 题解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-10T15:39:49+08:00">
-                2017-03-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://poj.org/problem?id=1631" target="_blank" rel="noopener">POJ 1631 Bridging signals</a></p>
-<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>铺垫太长以至于看了好久才懂……有人把电路板上的电线弄乱了，如左图。只有相互不交叉的电线才是可用的。给出和左边 1-p 连线的右边的端口顺序，求最多有多少条电线可用。</p>
-<p><img src="https://odzkskevi.qnssl.com/226e776304cadfd23e680d3bc5e28f06?v=1488518603" alt=""></p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>虽然铺垫了这么多，但本质上就是求最长上升子序列的长度的问题。只要右边的顺序上升的话，电线就不会缠在一起。</p>
-<p>一开始并没有想到，做完前一道题加提醒加背代码……很快写完了。</p>
-<p>还是要多学习一个，这样才能跟不同的人谈笑风生，啊不，见到不同的题才能抓住本质。</p>
-<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_P = <span class="number">40000</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> p;</span><br><span class="line"><span class="keyword">int</span> port[MAX_P + <span class="number">4</span>];</span><br><span class="line"><span class="keyword">int</span> dp[MAX_P + <span class="number">4</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;amp;n);</span><br><span class="line">    <span class="keyword">while</span> (n--) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;amp;p);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; p; i++) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;amp;port[i]);</span><br><span class="line">            dp[i] = INF;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; p; i++) &#123;</span><br><span class="line">            *lower_bound(dp, dp + p, port[i]) = port[i];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">cout</span> &amp;lt;&amp;lt; lower_bound(dp, dp + p, INF) - dp &amp;lt;&amp;lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<table id="listStatus" class="table table-striped table-bordered table-responsive dataTable no-footer hover-date" width="100%" cellspacing="0"><br><tbody><br><tr id="8389690" class="accepted odd"><br><td class=" run-id hidden-lg-down"><span style="font-size: 10pt;">8389690</span></td><br><td class=" username"><br><div><span style="font-size: 10pt;"><a href="https://vjudge.net/user/carolunar" target="_blank" rel="noopener">carolunar</a></span></div></td><br><td class=" oj"><span style="font-size: 10pt;">POJ</span></td><br><td class=" prob_num"><br><div><span style="font-size: 10pt;"><a href="https://vjudge.net/problem/POJ-1631" target="_blank" rel="noopener">1631</a></span></div></td><br><td class=" status hidden-md-down"><br><div class="view-solution" title="" data-toggle="tooltip" data-run-id="8389690" data-original-title=""><span style="font-size: 10pt;">Accepted</span></div></td><br><td class=" runtime"><span style="font-size: 10pt;">125ms</span></td><br><td class=" memory"><span style="font-size: 10pt;">0.5MB</span></td><br><td class=" length hidden-lg-down"><span style="font-size: 10pt;">580B</span></td><br><td class=" language"><br><div class="view-solution self" title="" data-toggle="tooltip" data-html="true" data-run-id="8389690" data-original-title="C++"><span style="font-size: 10pt;">C++</span></div></td><br><td class=" date"><br><div class="localizedTime" data-time="1489131005000"><span class="absolute" style="font-size: 10pt;">2017-03-10 15:30:05</span></div></td><br></tr><br></tbody><br></table>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1551,7 +1648,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1573,7 +1670,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

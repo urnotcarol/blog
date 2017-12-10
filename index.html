@@ -257,6 +257,131 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="//carolunar.com/2017/12/10/CSS3-transition-progress-bar/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Carolunar">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/blogImg/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Carol的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/10/CSS3-transition-progress-bar/" itemprop="url">CSS3 transition实现进度条动画</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-10T23:06:28+08:00">
+                2017-12-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>实现一个类似下面所示的动画，当鼠标悬浮于按钮上时，进度条会变成不同的长度，长度相应的百分比需从服务器获取。</p>
+<p><html></html></p>
+<p><iframe style="width: 100%; height: 300px" src="http://sandbox.runjs.cn/show/fhm14cl9" allowfullscreen="allowfullscreen" frameborder="0"></iframe><br></p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>原本打算使用CSS3的<code>animation</code>，后来发现并不知道如何用JS改变<code>@keyframe</code>中的参数。于是想起之前在犀牛书看过的<code>transition</code>，马上翻书来看，大功告成。</p>
+<h2 id="关键代码"><a href="#关键代码" class="headerlink" title="关键代码"></a>关键代码</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.bar</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">transition</span>: width <span class="number">1s</span> ease-in;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将其初始宽度设为0，使用<code>transiton</code>规定其宽度变化时会发生的行为。待到从服务器获取到参数后，再将其宽度设为相应数字，便可得到想要的效果。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="//carolunar.com/2017/07/08/spark-shakespeare/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1416,133 +1541,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="//carolunar.com/2017/04/04/aoj-2249-road-construction/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Carolunar">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/blogImg/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Carol的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/04/04/aoj-2249-road-construction/" itemprop="url">AOJ 2249 Road Construction 题解 Dijkstra 最短路</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-04T16:50:16+08:00">
-                2017-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2249" target="_blank" rel="noopener">AOJ 2249 Road Construction</a></p>
-<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>ACM 王国要修路。现有一个修路方案，此方案给出了连接王国的首都和其他城市的一些路线的距离和费用，可以确保任意两个城市之间是连通的。现在为了降低预算，需要修改这个方案。要求修改后的方案依然保持任意两点的连通性并且，首都到其他每个城市的最短距离不要变，在这两个前提下，求出修改后的方案的最低预算。</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>这是一个单源最短路问题。可以看成在给定的一个地图上，要求出首都到其他各个城市的最短路的建设费用之和。</p>
-<p>求最短路倒是简单，但是这个最少费用怎么求有点麻烦。看了别人的代码，思路是，在求出单源最短路之后，遍历除首都外的每个点 i，看下这条最短路是经过 i 的哪一个邻居结点来到 i 的，假设为 t，那么费用就在原来的基础上加上 i 与 t 之间的建设费用。这样在遍历所有结点的同时，也遍历了所有结点的最短路，同时不会出现同一条边的费用被计算两次的情况。假设边 e(i, j) 是首都到结点 j 的最短路上的最后一段，那么在遍历到 j 的时候就会加上这一条边的费用。而遍历到 i 的时候，首都到 i 的最短路必然不会经过边 e(i, j)，也就不会被重复计算。在这个过程中，每个结点只关心与自己相连的那条路的费用，等全部遍历完成的时候，自然就得出了整体的最少费用。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/04/04/aoj-2249-road-construction/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1597,7 +1595,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1619,7 +1617,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

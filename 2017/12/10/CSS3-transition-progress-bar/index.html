@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="CSS3," />
 
 
 
@@ -77,17 +77,18 @@
 
 
 
-<meta name="description" content="POJ 3050 Hopscotch 思路： 并无太好的…看了@Lorazepam的代码 原本的思路是用 vector 存放生成的整数，这样还需要在放进去之前把位数乘基数变成相应整数，而且需要对 vector 去重 然后才发现有 set 这一好用容器，插入值重复的话会插入失败，因此最后只要用 .size() 就可以得到所有的可能性了。并且不用bother to生成整数，直接当成字符串放进去就好了。">
+<meta name="description" content="目的实现一个类似下面所示的动画，当鼠标悬浮于按钮上时，进度条会变成不同的长度，长度相应的百分比需从服务器获取。   实现原本打算使用CSS3的animation，后来发现并不知道如何用JS改变@keyframe中的参数。于是想起之前在犀牛书看过的transition，马上翻书来看，大功告成。 关键代码1234.bar &amp;#123;  width: 0;  transition: width 1s">
+<meta name="keywords" content="CSS3">
 <meta property="og:type" content="article">
-<meta property="og:title" content="POJ 3050 Hopscotch 题解">
-<meta property="og:url" content="//carolunar.com/2017/02/12/poj-3050-hopscotch-e9-a2-98-e8-a7-a3/index.html">
+<meta property="og:title" content="CSS3 transition实现进度条动画">
+<meta property="og:url" content="//carolunar.com/2017/12/10/CSS3-transition-progress-bar/index.html">
 <meta property="og:site_name" content="Carol的博客">
-<meta property="og:description" content="POJ 3050 Hopscotch 思路： 并无太好的…看了@Lorazepam的代码 原本的思路是用 vector 存放生成的整数，这样还需要在放进去之前把位数乘基数变成相应整数，而且需要对 vector 去重 然后才发现有 set 这一好用容器，插入值重复的话会插入失败，因此最后只要用 .size() 就可以得到所有的可能性了。并且不用bother to生成整数，直接当成字符串放进去就好了。">
+<meta property="og:description" content="目的实现一个类似下面所示的动画，当鼠标悬浮于按钮上时，进度条会变成不同的长度，长度相应的百分比需从服务器获取。   实现原本打算使用CSS3的animation，后来发现并不知道如何用JS改变@keyframe中的参数。于是想起之前在犀牛书看过的transition，马上翻书来看，大功告成。 关键代码1234.bar &amp;#123;  width: 0;  transition: width 1s">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-09T15:31:04.317Z">
+<meta property="og:updated_time" content="2017-12-10T15:21:53.614Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="POJ 3050 Hopscotch 题解">
-<meta name="twitter:description" content="POJ 3050 Hopscotch 思路： 并无太好的…看了@Lorazepam的代码 原本的思路是用 vector 存放生成的整数，这样还需要在放进去之前把位数乘基数变成相应整数，而且需要对 vector 去重 然后才发现有 set 这一好用容器，插入值重复的话会插入失败，因此最后只要用 .size() 就可以得到所有的可能性了。并且不用bother to生成整数，直接当成字符串放进去就好了。">
+<meta name="twitter:title" content="CSS3 transition实现进度条动画">
+<meta name="twitter:description" content="目的实现一个类似下面所示的动画，当鼠标悬浮于按钮上时，进度条会变成不同的长度，长度相应的百分比需从服务器获取。   实现原本打算使用CSS3的animation，后来发现并不知道如何用JS改变@keyframe中的参数。于是想起之前在犀牛书看过的transition，马上翻书来看，大功告成。 关键代码1234.bar &amp;#123;  width: 0;  transition: width 1s">
 
 
 
@@ -117,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="//carolunar.com/2017/02/12/poj-3050-hopscotch-e9-a2-98-e8-a7-a3/"/>
+  <link rel="canonical" href="//carolunar.com/2017/12/10/CSS3-transition-progress-bar/"/>
 
 
 
 
 
-  <title>POJ 3050 Hopscotch 题解 | Carol的博客</title>
+  <title>CSS3 transition实现进度条动画 | Carol的博客</title>
   
 
 
@@ -260,7 +261,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="//carolunar.com/2017/02/12/poj-3050-hopscotch-e9-a2-98-e8-a7-a3/">
+    <link itemprop="mainEntityOfPage" href="//carolunar.com/2017/12/10/CSS3-transition-progress-bar/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Carolunar">
@@ -277,7 +278,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">POJ 3050 Hopscotch 题解</h1>
+          <h1 class="post-title" itemprop="name headline">CSS3 transition实现进度条动画</h1>
         
 
         <div class="post-meta">
@@ -289,8 +290,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-12T21:55:22+08:00">
-                2017-02-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-10T23:06:28+08:00">
+                2017-12-10
               </time>
             
 
@@ -327,16 +328,12 @@
       
 
       
-        <p><a href="http://poj.org/problem?id=3050" target="_blank" rel="noopener">POJ 3050 Hopscotch</a></p>
-<p>思路：</p>
-<p>并无太好的…看了@<a href="http://www.cnblogs.com/oscar-cnblogs/p/6298493.html" target="_blank" rel="noopener">Lorazepam</a>的代码</p>
-<p>原本的思路是用 vector<int> 存放生成的整数，这样还需要在放进去之前把位数乘基数变成相应整数，而且需要对 vector 去重</int></p>
-<p>然后才发现有 set 这一好用容器，插入值重复的话会插入失败，因此最后只要用 .size() 就可以得到所有的可能性了。并且不用bother to生成整数，直接当成字符串放进去就好了。</p>
-<p>用DFS，网格上的每一点都依次作为起点开始深搜，每跳一步 n 就加 1，当 n 为 6 时，说明前面已经有 0~5 这 6 步了， 返回。</p>
-<p>因为有 n 为 6 做限制，所以就算可以重复访问，也不会无限循环。</p>
-<p>&nbsp;</p>
-<p>还需进一步领会深搜和广搜的精神。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> grid[<span class="number">5</span>][<span class="number">5</span>];</span><br><span class="line"><span class="keyword">int</span> dx[<span class="number">4</span>] = &#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> dy[<span class="number">4</span>] = &#123;<span class="number">0</span>, <span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">char</span> digits[<span class="number">6</span>];</span><br><span class="line"><span class="built_in">set</span>&lt;<span class="built_in">string</span>&gt; integers;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">6</span>) &#123;</span><br><span class="line">        <span class="built_in">string</span> temp = digits;</span><br><span class="line">        integers.insert(temp);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    digits[n] = grid[x][y] + <span class="string">'0'</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> nx = x + dx[i];</span><br><span class="line">        <span class="keyword">int</span> ny = y + dy[i];</span><br><span class="line">        <span class="keyword">if</span> (nx &amp;gt;= <span class="number">0</span> &amp;amp;&amp;amp; nx &lt; <span class="number">5</span> &amp;amp;&amp;amp; ny &gt;= <span class="number">0</span> &amp;amp;&amp;amp; ny &amp;lt; <span class="number">5</span>) &#123;</span><br><span class="line">            dfs(nx, ny, n + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;      </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &amp;lt; <span class="number">5</span>; j++) &#123;</span><br><span class="line">            <span class="built_in">cin</span> &amp;gt;&amp;gt; grid[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &amp;lt; <span class="number">5</span>; j++) &#123;</span><br><span class="line">            dfs(i, j, <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;   </span><br><span class="line">    <span class="built_in">cout</span> &amp;lt;&amp;lt; integers.size();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>&nbsp;</p>
+        <h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>实现一个类似下面所示的动画，当鼠标悬浮于按钮上时，进度条会变成不同的长度，长度相应的百分比需从服务器获取。</p>
+<p><html></html></p>
+<p><iframe style="width: 100%; height: 300px" src="http://sandbox.runjs.cn/show/fhm14cl9" allowfullscreen="allowfullscreen" frameborder="0"></iframe><br></p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>原本打算使用CSS3的<code>animation</code>，后来发现并不知道如何用JS改变<code>@keyframe</code>中的参数。于是想起之前在犀牛书看过的<code>transition</code>，马上翻书来看，大功告成。</p>
+<h2 id="关键代码"><a href="#关键代码" class="headerlink" title="关键代码"></a>关键代码</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.bar</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">transition</span>: width <span class="number">1s</span> ease-in;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将其初始宽度设为0，使用<code>transiton</code>规定其宽度变化时会发生的行为。待到从服务器获取到参数后，再将其宽度设为相应数字，便可得到想要的效果。</p>
 
       
     </div>
@@ -352,6 +349,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/CSS3/" rel="tag"># CSS3</a>
+          
+        </div>
+      
 
       
       
@@ -361,8 +364,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/12/poj-3187-backward-digit-sums/" rel="next" title="POJ 3187 Backward Digit Sums 题解">
-                <i class="fa fa-chevron-left"></i> POJ 3187 Backward Digit Sums 题解
+              <a href="/2017/07/08/spark-shakespeare/" rel="next" title="Spark统计莎士比亚文集词频大容量版">
+                <i class="fa fa-chevron-left"></i> Spark统计莎士比亚文集词频大容量版
               </a>
             
           </div>
@@ -370,10 +373,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/12/aoj-0525-osenbei/" rel="prev" title="[转] AOJ 0525 Osenbei《挑战程序设计竞赛(第2版)》练习题答案">
-                [转] AOJ 0525 Osenbei《挑战程序设计竞赛(第2版)》练习题答案 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -425,8 +424,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -506,6 +514,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目的"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x76EE;&#x7684;" class="headerlink" title="&#x76EE;&#x7684;"></a>&#x76EE;&#x7684;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x5B9E;&#x73B0;" class="headerlink" title="&#x5B9E;&#x73B0;"></a>&#x5B9E;&#x73B0;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关键代码"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x5173;&#x952E;&#x4EE3;&#x7801;" class="headerlink" title="&#x5173;&#x952E;&#x4EE3;&#x7801;"></a>&#x5173;&#x952E;&#x4EE3;&#x7801;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
