@@ -85,7 +85,7 @@
 <meta property="og:site_name" content="Carol的博客">
 <meta property="og:description" content="目的实现一个类似下面所示的动画，当鼠标悬浮于按钮上时，进度条会变成不同的长度，长度相应的百分比需从服务器获取。   实现原本打算使用CSS3的animation，后来发现并不知道如何用JS改变@keyframe中的参数。于是想起之前在犀牛书看过的transition，马上翻书来看，大功告成。 关键代码1234.bar &amp;#123;  width: 0;  transition: width 1s">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-10T15:21:53.614Z">
+<meta property="og:updated_time" content="2017-12-10T15:32:50.160Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS3 transition实现进度条动画">
 <meta name="twitter:description" content="目的实现一个类似下面所示的动画，当鼠标悬浮于按钮上时，进度条会变成不同的长度，长度相应的百分比需从服务器获取。   实现原本打算使用CSS3的animation，后来发现并不知道如何用JS改变@keyframe中的参数。于是想起之前在犀牛书看过的transition，马上翻书来看，大功告成。 关键代码1234.bar &amp;#123;  width: 0;  transition: width 1s">
@@ -330,7 +330,7 @@
       
         <h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>实现一个类似下面所示的动画，当鼠标悬浮于按钮上时，进度条会变成不同的长度，长度相应的百分比需从服务器获取。</p>
 <p><html></html></p>
-<p><iframe style="width: 100%; height: 300px" src="http://sandbox.runjs.cn/show/fhm14cl9" allowfullscreen="allowfullscreen" frameborder="0"></iframe><br></p>
+<p><iframe style="width: 100%; height: 100px" src="http://sandbox.runjs.cn/show/fhm14cl9" allowfullscreen="allowfullscreen" frameborder="0"></iframe><br></p>
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>原本打算使用CSS3的<code>animation</code>，后来发现并不知道如何用JS改变<code>@keyframe</code>中的参数。于是想起之前在犀牛书看过的<code>transition</code>，马上翻书来看，大功告成。</p>
 <h2 id="关键代码"><a href="#关键代码" class="headerlink" title="关键代码"></a>关键代码</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.bar</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">transition</span>: width <span class="number">1s</span> ease-in;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>将其初始宽度设为0，使用<code>transiton</code>规定其宽度变化时会发生的行为。待到从服务器获取到参数后，再将其宽度设为相应数字，便可得到想要的效果。</p>
