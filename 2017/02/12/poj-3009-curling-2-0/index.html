@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="算法,OJ," />
 
 
 
@@ -77,17 +77,18 @@
 
 
 
-<meta name="description" content="POJ3009 Curling 2.0 思路：DFS + 回溯 //照着别人的代码写的，测试数据输出正确，但没有AC，没有找到原因 //经@Lorazepam 提示，下面这行代码的h和w写反了… 66     while(scanf(“%d %d”, &amp;amp;h, &amp;amp;w) != EOF)123456//每个地图有n种路线，每条路线都会改变地图，因此每次搜索完毕得到结果（goal）后，要复">
+<meta name="description" content="POJ3009 Curling 2.0 思路：DFS + 回溯 // 照着别人的代码写的，测试数据输出正确，但没有AC，没有找到原因 // 经@Lorazepam 提示，下面这行代码的h和w写反了… while(scanf(&amp;quot;%d %d&amp;quot;, &amp;amp;h, &amp;amp;w) != EOF) // 每个地图有n种路线，每条路线都会改变地图，因此每次搜索完毕得到结果（goal）后，要">
+<meta name="keywords" content="算法,OJ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="POJ 3009 Curling 2.0 题解">
 <meta property="og:url" content="//carolunar.com/2017/02/12/poj-3009-curling-2-0/index.html">
 <meta property="og:site_name" content="Carol的博客">
-<meta property="og:description" content="POJ3009 Curling 2.0 思路：DFS + 回溯 //照着别人的代码写的，测试数据输出正确，但没有AC，没有找到原因 //经@Lorazepam 提示，下面这行代码的h和w写反了… 66     while(scanf(“%d %d”, &amp;amp;h, &amp;amp;w) != EOF)123456//每个地图有n种路线，每条路线都会改变地图，因此每次搜索完毕得到结果（goal）后，要复">
+<meta property="og:description" content="POJ3009 Curling 2.0 思路：DFS + 回溯 // 照着别人的代码写的，测试数据输出正确，但没有AC，没有找到原因 // 经@Lorazepam 提示，下面这行代码的h和w写反了… while(scanf(&amp;quot;%d %d&amp;quot;, &amp;amp;h, &amp;amp;w) != EOF) // 每个地图有n种路线，每条路线都会改变地图，因此每次搜索完毕得到结果（goal）后，要">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-09T15:31:04.403Z">
+<meta property="og:updated_time" content="2017-12-16T06:34:33.328Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="POJ 3009 Curling 2.0 题解">
-<meta name="twitter:description" content="POJ3009 Curling 2.0 思路：DFS + 回溯 //照着别人的代码写的，测试数据输出正确，但没有AC，没有找到原因 //经@Lorazepam 提示，下面这行代码的h和w写反了… 66     while(scanf(“%d %d”, &amp;amp;h, &amp;amp;w) != EOF)123456//每个地图有n种路线，每条路线都会改变地图，因此每次搜索完毕得到结果（goal）后，要复">
+<meta name="twitter:description" content="POJ3009 Curling 2.0 思路：DFS + 回溯 // 照着别人的代码写的，测试数据输出正确，但没有AC，没有找到原因 // 经@Lorazepam 提示，下面这行代码的h和w写反了… while(scanf(&amp;quot;%d %d&amp;quot;, &amp;amp;h, &amp;amp;w) != EOF) // 每个地图有n种路线，每条路线都会改变地图，因此每次搜索完毕得到结果（goal）后，要">
 
 
 
@@ -95,9 +96,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '5.1.3',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -300,6 +301,39 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/搜索/" itemprop="url" rel="index">
+                    <span itemprop="name">搜索</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -327,52 +361,14 @@
       
 
       
-        <p><span style="color: #008080;"><a href="http://poj.org/problem?id=3009" target="_blank" rel="noopener">POJ3009 Curling 2.0</a></span></p>
+        <p><a href="http://poj.org/problem?id=3009" target="_blank" rel="noopener">POJ3009 Curling 2.0</a></p>
 <p>思路：DFS + 回溯</p>
-<p>//照着别人的代码写的，测试数据输出正确，但没有AC，没有找到原因</p>
-<p><span style="color: #993300;">//经@<a href="http://www.cnblogs.com/oscar-cnblogs/" target="_blank" rel="noopener">Lorazepam</a> 提示，下面这行代码的h和w写反了…</span></p>
-<p><pre class="">66     while(scanf(“%d %d”, &amp;h, &amp;w) != EOF)<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//每个地图有n种路线，每条路线都会改变地图，因此每次搜索完毕得到结果（goal）后，要复原地图</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//每次递归DFS，就代表碰到了墙，需改变路线，因此要 step + 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//每条路线所用步数不同，题目求最小步数，因此要 goal = min(goal, step)</span></span><br></pre></td></tr></table></figure></pre></p>
-<p>#include <iostream></iostream></p>
-<p>#include <stdio.h></stdio.h></p>
-<p>using namespace std;</p>
-<p>int w;<br>int h;<br>const int INF = 0x3f3f3f3f; //常用的无穷大常量<br>int goal;<br>int res[100];<br>int sx;<br>int sy;<br>int dx[4] = {-1, 0, 1, 0};<br>int dy[4] = {0, 1, 0, -1};</p>
-<p>int board[25][25];</p>
-<p>bool isNotOut(int x, int y) {<br>    if(x &lt; 0 || y &lt; 0 || x &gt;= h || y &gt;= w) {<br>        return false;<br>    }<br>    return true;<br>}</p>
-<p>void dfs(int step, int x, int y) {<br>    int nx;<br>    int ny;</p>
-<pre><code>if(step &amp;gt; 10) {
-    return ;
-}
-
-for(int i = 0; i &amp;lt; 4; i++) {
-    nx = x + dx[i];
-    ny = y + dy[i];
-
-    if(!isNotOut(nx, ny)) {
-        continue;  
-    }
-    if(board[nx][ny] == 1) {
-        continue;
-    }
-    while(!board[nx][ny]) {
-        nx += dx[i];
-        ny += dy[i];
-        if(!isNotOut(nx, ny)) {
-            break;
-        }
-    } 
-    if(isNotOut(nx, ny)) {
-        if(board[nx][ny] == 3) {
-            goal = min(goal, step);
-        }
-        if(board[nx][ny] == 1) {
-            board[nx][ny] = 0;
-            dfs(step + 1, nx - dx[i], ny - dy[i]);
-            board[nx][ny] = 1;
-        }
-    }
-}
-</code></pre><p>}</p>
-<p>int main() {<br>    int n = 0;<br>    while(scanf(“%d %d”, &amp;h, &amp;w) != EOF) {<br>        if(w == 0 &amp;&amp; h == 0) {<br>            break;<br>        }<br>        for(int i = 0; i &lt; h; i++) {<br>            for(int j = 0; j &lt; w; j++) {<br>                scanf(“%d”, &amp;board[i][j]);<br>                if(board[i][j] == 2) {<br>                    sx = i;<br>                    sy = j;<br>                    board[i][j] = 0;<br>                }<br>            }<br>        }<br>        goal = INF;<br>        dfs(1, sx, sy);<br>        res[n] = goal;<br>        n++;<br>    }<br>    for (int i = 0; i &lt; n; i++) {<br>        if(res[i] != INF) {<br>            printf(“%d\n”, res[i]);<br>        } else {<br>            printf(“-1\n”);<br>        }<br>    }<br>    return 0;<br>}<br>```</p>
+<p>// 照着别人的代码写的，测试数据输出正确，但没有AC，没有找到原因</p>
+<p>// 经@<a href="http://www.cnblogs.com/oscar-cnblogs/" target="_blank" rel="noopener">Lorazepam</a> 提示，下面这行代码的h和w写反了…</p>
+<p><code>while(scanf(&quot;%d %d&quot;, &amp;h, &amp;w) != EOF)</code></p>
+<p>// 每个地图有n种路线，每条路线都会改变地图，因此每次搜索完毕得到结果（goal）后，要复原地图</p>
+<p>// 每次递归DFS，就代表碰到了墙，需改变路线，因此要 step + 1</p>
+<p>// 每条路线所用步数不同，题目求最小步数，因此要 goal = min(goal, step)<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> w;</span><br><span class="line"><span class="keyword">int</span> h;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>; <span class="comment">//常用的无穷大常量</span></span><br><span class="line"><span class="keyword">int</span> goal;</span><br><span class="line"><span class="keyword">int</span> res[<span class="number">100</span>];</span><br><span class="line"><span class="keyword">int</span> sx;</span><br><span class="line"><span class="keyword">int</span> sy;</span><br><span class="line"><span class="keyword">int</span> dx[<span class="number">4</span>] = &#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> dy[<span class="number">4</span>] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> board[<span class="number">25</span>][<span class="number">25</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isNotOut</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x &lt; <span class="number">0</span> || y &lt; <span class="number">0</span> || x &gt;= h || y &gt;= w) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> step, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> nx;</span><br><span class="line">    <span class="keyword">int</span> ny;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(step &gt; <span class="number">10</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">        nx = x + dx[i];</span><br><span class="line">        ny = y + dy[i];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(!isNotOut(nx, ny)) &#123;</span><br><span class="line">            <span class="keyword">continue</span>;  </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(board[nx][ny] == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(!board[nx][ny]) &#123;</span><br><span class="line">            nx += dx[i];</span><br><span class="line">            ny += dy[i];</span><br><span class="line">            <span class="keyword">if</span>(!isNotOut(nx, ny)) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">if</span>(isNotOut(nx, ny)) &#123;</span><br><span class="line">            <span class="keyword">if</span>(board[nx][ny] == <span class="number">3</span>) &#123;</span><br><span class="line">                goal = min(goal, step);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(board[nx][ny] == <span class="number">1</span>) &#123;</span><br><span class="line">                board[nx][ny] = <span class="number">0</span>;</span><br><span class="line">                dfs(step + <span class="number">1</span>, nx - dx[i], ny - dy[i]);</span><br><span class="line">                board[nx][ny] = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;h, &amp;w) != EOF) &#123;</span><br><span class="line">        <span class="keyword">if</span>(w == <span class="number">0</span> &amp;&amp; h == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; h; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; w; j++) &#123;</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;board[i][j]);</span><br><span class="line">                <span class="keyword">if</span>(board[i][j] == <span class="number">2</span>) &#123;</span><br><span class="line">                    sx = i;</span><br><span class="line">                    sy = j;</span><br><span class="line">                    board[i][j] = <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        goal = INF;</span><br><span class="line">        dfs(<span class="number">1</span>, sx, sy);   </span><br><span class="line">        res[n] = goal;</span><br><span class="line">        n++;    </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(res[i] != INF) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, res[i]);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>额外收获：</p>
 <p>while (scanf() != EOF) 或者 while (~scanf())，结合 if(w == 0 &amp;&amp; h == 0) break; 用来判断测试数据输入完毕</p>
 
@@ -389,6 +385,14 @@ for(int i = 0; i &amp;lt; 4; i++) {
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+            <a href="/tags/OJ/" rel="tag"># OJ</a>
+          
+        </div>
       
 
       
@@ -483,7 +487,7 @@ for(int i = 0; i &amp;lt; 4; i++) {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -494,7 +498,7 @@ for(int i = 0; i &amp;lt; 4; i++) {
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -505,7 +509,7 @@ for(int i = 0; i &amp;lt; 4; i++) {
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -521,13 +525,13 @@ for(int i = 0; i &amp;lt; 4; i++) {
                 <span class="links-of-author-item">
                   <a href="https://github.com/urnotcarol" target="_blank" title="GitHub">
                     
-                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                      <i class="fa fa-fw fa-github"></i></a>
                 </span>
               
                 <span class="links-of-author-item">
                   <a href="mailto:carolunar@163.com" target="_blank" title="E-Mail">
                     
-                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                      <i class="fa fa-fw fa-envelope"></i></a>
                 </span>
               
             
@@ -547,6 +551,11 @@ for(int i = 0; i &amp;lt; 4; i++) {
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -558,7 +567,7 @@ for(int i = 0; i &amp;lt; 4; i++) {
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -576,7 +585,7 @@ for(int i = 0; i &amp;lt; 4; i++) {
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
 
 
 
@@ -602,11 +611,6 @@ for(int i = 0; i &amp;lt; 4; i++) {
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -684,6 +688,13 @@ for(int i = 0; i &amp;lt; 4; i++) {
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>

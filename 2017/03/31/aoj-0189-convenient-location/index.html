@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="算法,OJ," />
 
 
 
@@ -78,6 +78,7 @@
 
 
 <meta name="description" content="AOJ 0189 Convenient Location 题意如图所示，有若干个房子，给出一些边，权重代表两个房子间距离长度，求出哪个房子到其他所有房子的距离最短。  思路求任意两点间最短距离，我用了 Bellman-Ford，事实上用 Floyd 算法更好。">
+<meta name="keywords" content="算法,OJ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AOJ 0189 Convenient Location 题解">
 <meta property="og:url" content="//carolunar.com/2017/03/31/aoj-0189-convenient-location/index.html">
@@ -85,7 +86,7 @@
 <meta property="og:description" content="AOJ 0189 Convenient Location 题意如图所示，有若干个房子，给出一些边，权重代表两个房子间距离长度，求出哪个房子到其他所有房子的距离最短。  思路求任意两点间最短距离，我用了 Bellman-Ford，事实上用 Floyd 算法更好。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://odzkskevi.qnssl.com/42d8d42d2db84e144530c2c3a16e1f5d?v=1490930000">
-<meta property="og:updated_time" content="2017-12-09T15:33:26.948Z">
+<meta property="og:updated_time" content="2017-12-16T03:01:30.896Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AOJ 0189 Convenient Location 题解">
 <meta name="twitter:description" content="AOJ 0189 Convenient Location 题意如图所示，有若干个房子，给出一些边，权重代表两个房子间距离长度，求出哪个房子到其他所有房子的距离最短。  思路求任意两点间最短距离，我用了 Bellman-Ford，事实上用 Floyd 算法更好。">
@@ -97,9 +98,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '5.1.3',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -302,6 +303,39 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/最短路径/" itemprop="url" rel="index">
+                    <span itemprop="name">最短路径</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -334,7 +368,7 @@
 <p><img src="https://odzkskevi.qnssl.com/42d8d42d2db84e144530c2c3a16e1f5d?v=1490930000" alt=""></p>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>求任意两点间最短距离，我用了 Bellman-Ford，事实上用 Floyd 算法更好。</p>
 <a id="more"></a>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">45</span> * <span class="number">2</span> + <span class="number">4</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_V = <span class="number">10</span> + <span class="number">4</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> v;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> from;</span><br><span class="line">    <span class="keyword">int</span> to;</span><br><span class="line">    <span class="keyword">int</span> cost;</span><br><span class="line">&#125; edge[MAX_N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> d[MAX_V];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Bellman_Ford</span> <span class="params">(<span class="keyword">int</span> s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    fill(d, d + MAX_V, INF);</span><br><span class="line">    d[s] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="keyword">bool</span> update = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; <span class="number">2</span> * n; i++) &#123;</span><br><span class="line">            Edge e = edge[i];</span><br><span class="line">            <span class="keyword">if</span> (d[e.from] != INF &amp;amp;&amp;amp; d[e.from] + e.cost &amp;lt; d[e.to]) &#123;</span><br><span class="line">                d[e.to] = d[e.from] + e.cost;</span><br><span class="line">                update = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!update) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt;= v; i++) &#123;</span><br><span class="line">        res += d[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;amp;n) &amp;amp;&amp;amp; n &amp;gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> path[MAX_V];                           </span><br><span class="line">        v = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; n; i++) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>, &amp;amp;edge[i].from, &amp;amp;edge[i].to, &amp;amp;edge[i].cost);</span><br><span class="line">            edge[i + n].from = edge[i].to;</span><br><span class="line">            edge[i + n].to = edge[i].from;</span><br><span class="line">            edge[i + n].cost = edge[i].cost;</span><br><span class="line">            v = max(v, edge[i].from);</span><br><span class="line">            v = max(v, edge[i].to);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt;= v; i++) &#123;</span><br><span class="line">            path[i] = Bellman_Ford(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>, min_element(path, path + v + <span class="number">1</span>) - path, *min_element(path, path + v + <span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">45</span> * <span class="number">2</span> + <span class="number">4</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_V = <span class="number">10</span> + <span class="number">4</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> v;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> from;</span><br><span class="line">    <span class="keyword">int</span> to;</span><br><span class="line">    <span class="keyword">int</span> cost;</span><br><span class="line">&#125; edge[MAX_N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> d[MAX_V];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Bellman_Ford</span> <span class="params">(<span class="keyword">int</span> s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    fill(d, d + MAX_V, INF);</span><br><span class="line">    d[s] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="keyword">bool</span> update = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span> * n; i++) &#123;</span><br><span class="line">            Edge e = edge[i];</span><br><span class="line">            <span class="keyword">if</span> (d[e.from] != INF &amp;&amp; d[e.from] + e.cost &lt; d[e.to]) &#123;</span><br><span class="line">                d[e.to] = d[e.from] + e.cost;</span><br><span class="line">                update = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!update) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= v; i++) &#123;</span><br><span class="line">        res += d[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n) &amp;&amp; n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> path[MAX_V];                           </span><br><span class="line">        v = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>, &amp;edge[i].from, &amp;edge[i].to, &amp;edge[i].cost);</span><br><span class="line">            edge[i + n].from = edge[i].to;</span><br><span class="line">            edge[i + n].to = edge[i].from;</span><br><span class="line">            edge[i + n].cost = edge[i].cost;</span><br><span class="line">            v = max(v, edge[i].from);</span><br><span class="line">            v = max(v, edge[i].to);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= v; i++) &#123;</span><br><span class="line">            path[i] = Bellman_Ford(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>, min_element(path, path + v + <span class="number">1</span>) - path, *min_element(path, path + v + <span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -350,6 +384,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+            <a href="/tags/OJ/" rel="tag"># OJ</a>
+          
+        </div>
+      
 
       
       
@@ -359,8 +401,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/21/get-directory-listing-of-a-path-in-cpp/" rel="next" title="C++ 获取特定路径下所有文件的文件名">
-                <i class="fa fa-chevron-left"></i> C++ 获取特定路径下所有文件的文件名
+              <a href="/2017/03/18/ccf-201612-3-authorization/" rel="next" title="CCF 201612-3 权限查询 题解">
+                <i class="fa fa-chevron-left"></i> CCF 201612-3 权限查询 题解
               </a>
             
           </div>
@@ -452,7 +494,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -463,7 +505,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -474,7 +516,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -490,13 +532,13 @@
                 <span class="links-of-author-item">
                   <a href="https://github.com/urnotcarol" target="_blank" title="GitHub">
                     
-                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                      <i class="fa fa-fw fa-github"></i></a>
                 </span>
               
                 <span class="links-of-author-item">
                   <a href="mailto:carolunar@163.com" target="_blank" title="E-Mail">
                     
-                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                      <i class="fa fa-fw fa-envelope"></i></a>
                 </span>
               
             
@@ -532,6 +574,11 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -543,7 +590,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -561,7 +608,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
 
 
 
@@ -587,11 +634,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -669,6 +711,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>

@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="算法,OJ," />
 
 
 
@@ -78,13 +78,14 @@
 
 
 <meta name="description" content="POJ 3280 Cheapest Palindrome 题目大意给定一个长度为 M 的字符串，由小写字母表中的前 N 个字母组成（这点很 tricky），每个字母的添加删除都有相应的代价。求通过在任意位置增删，把该字符串变为回文字符串的最小代价。 思路这道题虽然 discuss 里面都说是大水题……但由于没有接触过这种新的递推式，所以理解别人的解题报告对我来说也还是有点挑战性。 令 dp[i][">
+<meta name="keywords" content="算法,OJ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="POJ 3280 Cheapest Palindrome 题解">
 <meta property="og:url" content="//carolunar.com/2017/03/09/poj-3280-cheapest-palindrome/index.html">
 <meta property="og:site_name" content="Carol的博客">
 <meta property="og:description" content="POJ 3280 Cheapest Palindrome 题目大意给定一个长度为 M 的字符串，由小写字母表中的前 N 个字母组成（这点很 tricky），每个字母的添加删除都有相应的代价。求通过在任意位置增删，把该字符串变为回文字符串的最小代价。 思路这道题虽然 discuss 里面都说是大水题……但由于没有接触过这种新的递推式，所以理解别人的解题报告对我来说也还是有点挑战性。 令 dp[i][">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-09T15:33:26.944Z">
+<meta property="og:updated_time" content="2017-12-16T06:34:33.314Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="POJ 3280 Cheapest Palindrome 题解">
 <meta name="twitter:description" content="POJ 3280 Cheapest Palindrome 题目大意给定一个长度为 M 的字符串，由小写字母表中的前 N 个字母组成（这点很 tricky），每个字母的添加删除都有相应的代价。求通过在任意位置增删，把该字符串变为回文字符串的最小代价。 思路这道题虽然 discuss 里面都说是大水题……但由于没有接触过这种新的递推式，所以理解别人的解题报告对我来说也还是有点挑战性。 令 dp[i][">
@@ -95,9 +96,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '5.1.3',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -300,6 +301,39 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/字符串/" itemprop="url" rel="index">
+                    <span itemprop="name">字符串</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -335,10 +369,7 @@
 <p>要注意的是，添加删除的本质是一样的，在某个位置添加一个字符等效于在轴对称的位置删除这个字符，因此 cost 直接取二者里面较小值。</p>
 <p>此外 i, j 的方向也需要特别注意，i 是从末尾到开头，j 是从 i + 1 到末尾。这样可以保证每一步都用到了前一步的结果，并且循环结束后得到了将整个字符串变为回文的最小代价。</p>
 <a id="more"></a>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_M = <span class="number">2000</span>;</span><br><span class="line"><span class="keyword">int</span> N;</span><br><span class="line"><span class="keyword">int</span> M;</span><br><span class="line"><span class="keyword">char</span> tag[MAX_M + <span class="number">3</span>];</span><br><span class="line"><span class="keyword">int</span> dp[MAX_M + <span class="number">3</span>][MAX_M + <span class="number">3</span>];</span><br><span class="line"><span class="keyword">int</span> cost[<span class="number">26</span> + <span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;amp;N, &amp;amp;M);</span><br><span class="line">    <span class="built_in">cin</span>.ignore();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; M; i++) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%c"</span>, &amp;amp;tag[i]); </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cin</span>.ignore();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span> tempChar;</span><br><span class="line">    <span class="keyword">int</span> add;</span><br><span class="line">    <span class="keyword">int</span> del;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; N; i++) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%c %d %d"</span>, &amp;amp;tempChar, &amp;amp;add, &amp;amp;del);</span><br><span class="line">        cost[tempChar - <span class="string">'a'</span>] = min(add, del);</span><br><span class="line">        <span class="built_in">cin</span>.ignore();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = M - <span class="number">1</span>; i &amp;gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &amp;lt; M; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (tag[i] == tag[j]) &#123;</span><br><span class="line">                dp[i][j] = dp[i + <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                dp[i][j] = min(dp[i][j - <span class="number">1</span>] + cost[tag[j] - <span class="string">'a'</span>], dp[i + <span class="number">1</span>][j] + cost[tag[i] - <span class="string">'a'</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &amp;lt;&amp;lt; dp[<span class="number">0</span>][M - <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_M = <span class="number">2000</span>;</span><br><span class="line"><span class="keyword">int</span> N;</span><br><span class="line"><span class="keyword">int</span> M;</span><br><span class="line"><span class="keyword">char</span> tag[MAX_M + <span class="number">3</span>];</span><br><span class="line"><span class="keyword">int</span> dp[MAX_M + <span class="number">3</span>][MAX_M + <span class="number">3</span>];</span><br><span class="line"><span class="keyword">int</span> cost[<span class="number">26</span> + <span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;N, &amp;M);</span><br><span class="line">    <span class="built_in">cin</span>.ignore();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; M; i++) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%c"</span>, &amp;tag[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cin</span>.ignore();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span> tempChar;</span><br><span class="line">    <span class="keyword">int</span> add;</span><br><span class="line">    <span class="keyword">int</span> del;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%c %d %d"</span>, &amp;tempChar, &amp;add, &amp;del);</span><br><span class="line">        cost[tempChar - <span class="string">'a'</span>] = min(add, del);</span><br><span class="line">        <span class="built_in">cin</span>.ignore();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = M - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; M; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (tag[i] == tag[j]) &#123;</span><br><span class="line">                dp[i][j] = dp[i + <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                dp[i][j] = min(dp[i][j - <span class="number">1</span>] + cost[tag[j] - <span class="string">'a'</span>], dp[i + <span class="number">1</span>][j] + cost[tag[i] - <span class="string">'a'</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; dp[<span class="number">0</span>][M - <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -352,6 +383,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+            <a href="/tags/OJ/" rel="tag"># OJ</a>
+          
+        </div>
       
 
       
@@ -455,7 +494,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -466,7 +505,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -477,7 +516,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -493,13 +532,13 @@
                 <span class="links-of-author-item">
                   <a href="https://github.com/urnotcarol" target="_blank" title="GitHub">
                     
-                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                      <i class="fa fa-fw fa-github"></i></a>
                 </span>
               
                 <span class="links-of-author-item">
                   <a href="mailto:carolunar@163.com" target="_blank" title="E-Mail">
                     
-                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                      <i class="fa fa-fw fa-envelope"></i></a>
                 </span>
               
             
@@ -535,6 +574,11 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -546,7 +590,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -564,7 +608,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
 
 
 
@@ -590,11 +634,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -672,6 +711,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>

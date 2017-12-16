@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="算法,OJ," />
 
 
 
@@ -78,6 +78,7 @@
 
 
 <meta name="description" content="题意给定两个字符串 W 和 T，求 W 在 T 中出现的次数。 思路KMP 算法的应用题。 看了一天可算是看明白了。 感想：感性层面理解一个算法和落实到代码上，还差了 10 页《算法导论》吧。毕竟传说中，数据结构老师上小学的女儿都可以帮她批阅期末考试的卷子… 引用一篇别人的博客（阮一峰），便于温习感性认识。至于实现细节，需要看某导论和代码。  　　字符串匹配是计算机的基本任务之一。 举例来说，有一">
+<meta name="keywords" content="算法,OJ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="POJ 3461 Oulipo 题解 KMP">
 <meta property="og:url" content="//carolunar.com/2017/04/03/poj-3461-oulipo/index.html">
@@ -103,7 +104,7 @@
 <meta property="og:image" content="http://images.cnitblog.com/news/331782/201305/02140958-0ff0d174ed79413d9052797fab044596.png">
 <meta property="og:image" content="http://images.cnitblog.com/news/331782/201305/02140958-eb88ca7ad6d54fe4b44dc9ec0061f745.png">
 <meta property="og:image" content="http://www.carolunar.com/wp-content/uploads/2017/04/QQ图片20170403212005.png">
-<meta property="og:updated_time" content="2017-12-09T15:33:26.930Z">
+<meta property="og:updated_time" content="2017-12-16T06:34:33.324Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="POJ 3461 Oulipo 题解 KMP">
 <meta name="twitter:description" content="题意给定两个字符串 W 和 T，求 W 在 T 中出现的次数。 思路KMP 算法的应用题。 看了一天可算是看明白了。 感想：感性层面理解一个算法和落实到代码上，还差了 10 页《算法导论》吧。毕竟传说中，数据结构老师上小学的女儿都可以帮她批阅期末考试的卷子… 引用一篇别人的博客（阮一峰），便于温习感性认识。至于实现细节，需要看某导论和代码。  　　字符串匹配是计算机的基本任务之一。 举例来说，有一">
@@ -115,9 +116,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '5.1.3',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -320,6 +321,39 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/字符串/" itemprop="url" rel="index">
+                    <span itemprop="name">字符串</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -427,7 +461,7 @@
 <p><img src="http://www.carolunar.com/wp-content/uploads/2017/04/QQ图片20170403212005.png" alt=""></p>
 <p><strong>* 再另外，</strong>我的体会是，不要去想那么多“模式串右移几位”的事，直接看做是比较两个串的第几位和第几位，更直观和容易理解一点，又不是非得对齐了才能比较。我觉得斜着瞅一眼要比想着怎么移动省事一些。</p>
 <a id="more"></a>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;memory.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">1000000</span> + <span class="number">16</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> W[MAX_N];</span><br><span class="line"><span class="keyword">char</span> T[MAX_N];</span><br><span class="line"><span class="keyword">int</span> Pi[MAX_N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">computePrefix</span><span class="params">(<span class="keyword">char</span> * P)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(Pi, <span class="number">0</span>, <span class="keyword">sizeof</span>(Pi));</span><br><span class="line">    <span class="keyword">int</span> n = <span class="built_in">strlen</span>(P);</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    Pi[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> q = <span class="number">1</span>; q &amp;lt; n; q++) &#123;</span><br><span class="line">        <span class="keyword">while</span> (k &amp;gt; <span class="number">0</span> &amp;amp;&amp;amp; P[q] != P[k]) &#123;</span><br><span class="line">            k = Pi[k - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (P[q] == P[k]) &#123;</span><br><span class="line">            k++;</span><br><span class="line">        &#125;</span><br><span class="line">        Pi[q] = k;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">KMP</span><span class="params">(<span class="keyword">char</span> * T, <span class="keyword">char</span> * P)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="built_in">strlen</span>(T);</span><br><span class="line">    <span class="keyword">int</span> m = <span class="built_in">strlen</span>(P);</span><br><span class="line">    <span class="keyword">int</span> q = <span class="number">0</span>;       <span class="comment">//numbers of characters matched</span></span><br><span class="line">    computePrefix(P);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">while</span> (q &amp;gt; <span class="number">0</span> &amp;amp;&amp;amp; P[q] != T[i]) &#123;</span><br><span class="line">            q = Pi[q - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (P[q] == T[i]) &#123;</span><br><span class="line">            q++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (q == m) &#123;</span><br><span class="line">            res++;</span><br><span class="line">            q = Pi[q - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> C;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;amp;C);</span><br><span class="line">    <span class="keyword">while</span> (C--) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>, W);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>, T);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, KMP(T, W));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;memory.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">1000000</span> + <span class="number">16</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> W[MAX_N];</span><br><span class="line"><span class="keyword">char</span> T[MAX_N];</span><br><span class="line"><span class="keyword">int</span> Pi[MAX_N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">computePrefix</span><span class="params">(<span class="keyword">char</span> * P)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(Pi, <span class="number">0</span>, <span class="keyword">sizeof</span>(Pi));</span><br><span class="line">    <span class="keyword">int</span> n = <span class="built_in">strlen</span>(P);</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    Pi[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> q = <span class="number">1</span>; q &lt; n; q++) &#123;</span><br><span class="line">        <span class="keyword">while</span> (k &gt; <span class="number">0</span> &amp;&amp; P[q] != P[k]) &#123;</span><br><span class="line">            k = Pi[k - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (P[q] == P[k]) &#123;</span><br><span class="line">            k++;</span><br><span class="line">        &#125;</span><br><span class="line">        Pi[q] = k;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">KMP</span><span class="params">(<span class="keyword">char</span> * T, <span class="keyword">char</span> * P)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="built_in">strlen</span>(T);</span><br><span class="line">    <span class="keyword">int</span> m = <span class="built_in">strlen</span>(P);</span><br><span class="line">    <span class="keyword">int</span> q = <span class="number">0</span>;       <span class="comment">//numbers of characters matched</span></span><br><span class="line">    computePrefix(P);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">while</span> (q &gt; <span class="number">0</span> &amp;&amp; P[q] != T[i]) &#123;</span><br><span class="line">            q = Pi[q - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (P[q] == T[i]) &#123;</span><br><span class="line">            q++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (q == m) &#123;</span><br><span class="line">            res++;</span><br><span class="line">            q = Pi[q - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> C;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;C);</span><br><span class="line">    <span class="keyword">while</span> (C--) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>, W);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>, T);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, KMP(T, W));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <table id="listStatus" class="table table-striped table-bordered table-responsive dataTable no-footer hover-date" width="100%" cellspacing="0"><br><tbody><br><tr id="8650221" class="accepted odd"><br><td class=" run-id hidden-lg-down"><span style="font-size: 10pt;">8650221</span></td><br><td class=" username"><br><div><span style="font-size: 10pt;"><a href="https://vjudge.net/user/carolunar" target="_blank" rel="noopener">carolunar</a></span></div></td><br><td class=" oj"><span style="font-size: 10pt;">POJ</span></td><br><td class=" prob_num"><br><div><span style="font-size: 10pt;"><a href="https://vjudge.net/problem/POJ-3461" target="_blank" rel="noopener">3461</a></span></div></td><br><td class=" status hidden-md-down"><br><div class="view-solution" title="" data-toggle="tooltip" data-run-id="8650221" data-original-title=""><span style="font-size: 10pt;">Accepted</span></div></td><br><td class=" runtime"><span style="font-size: 10pt;">157</span></td><br><td class=" memory"><span style="font-size: 10pt;">5.1</span></td><br><td class=" length hidden-lg-down"><span style="font-size: 10pt;">1182</span></td><br><td class=" language"><br><div class="view-solution shared" title="" data-toggle="tooltip" data-html="true" data-run-id="8650221" data-original-title="C++"><span style="font-size: 10pt;">C++</span></div></td><br><td class=" date"><br><div class="localizedTime" data-time="1491221690000"><span class="absolute" style="font-size: 10pt;">2017-04-03 20:14:50</span></div></td><br></tr><br></tbody><br></table>
       
     </div>
@@ -442,6 +476,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+            <a href="/tags/OJ/" rel="tag"># OJ</a>
+          
+        </div>
       
 
       
@@ -545,7 +587,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -556,7 +598,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -567,7 +609,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -583,13 +625,13 @@
                 <span class="links-of-author-item">
                   <a href="https://github.com/urnotcarol" target="_blank" title="GitHub">
                     
-                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                      <i class="fa fa-fw fa-github"></i></a>
                 </span>
               
                 <span class="links-of-author-item">
                   <a href="mailto:carolunar@163.com" target="_blank" title="E-Mail">
                     
-                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                      <i class="fa fa-fw fa-envelope"></i></a>
                 </span>
               
             
@@ -625,6 +667,11 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -636,7 +683,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -654,7 +701,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
 
 
 
@@ -680,11 +727,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -762,6 +804,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>

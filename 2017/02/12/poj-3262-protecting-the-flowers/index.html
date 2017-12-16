@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="算法,OJ," />
 
 
 
@@ -78,13 +78,14 @@
 
 
 <meta name="description" content="&amp;nbsp; POJ 3262 Protecting the Flowers 奶牛吃花花 这道题，需要好好总结。 原来的思路是，依次计算出送走奶牛1~N会毁掉的花的数量，找出最小的，送走这头牛。然后又在剩下的奶牛中找可以使毁掉的花的数量最小的送走。如此循环直到全被送走。 对是对，只是也太繁琐了些，并且超时。 没有意识到其实这样的思路进行了很多次重复的比较。 &amp;nbsp; 后来看了别人的思路，发现可">
+<meta name="keywords" content="算法,OJ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="POJ 3262 Protecting the Flowers 题解">
 <meta property="og:url" content="//carolunar.com/2017/02/12/poj-3262-protecting-the-flowers/index.html">
 <meta property="og:site_name" content="Carol的博客">
 <meta property="og:description" content="&amp;nbsp; POJ 3262 Protecting the Flowers 奶牛吃花花 这道题，需要好好总结。 原来的思路是，依次计算出送走奶牛1~N会毁掉的花的数量，找出最小的，送走这头牛。然后又在剩下的奶牛中找可以使毁掉的花的数量最小的送走。如此循环直到全被送走。 对是对，只是也太繁琐了些，并且超时。 没有意识到其实这样的思路进行了很多次重复的比较。 &amp;nbsp; 后来看了别人的思路，发现可">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-09T15:31:04.373Z">
+<meta property="og:updated_time" content="2017-12-16T06:34:33.313Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="POJ 3262 Protecting the Flowers 题解">
 <meta name="twitter:description" content="&amp;nbsp; POJ 3262 Protecting the Flowers 奶牛吃花花 这道题，需要好好总结。 原来的思路是，依次计算出送走奶牛1~N会毁掉的花的数量，找出最小的，送走这头牛。然后又在剩下的奶牛中找可以使毁掉的花的数量最小的送走。如此循环直到全被送走。 对是对，只是也太繁琐了些，并且超时。 没有意识到其实这样的思路进行了很多次重复的比较。 &amp;nbsp; 后来看了别人的思路，发现可">
@@ -95,9 +96,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '5.1.3',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -300,6 +301,39 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/贪心/" itemprop="url" rel="index">
+                    <span itemprop="name">贪心</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -340,7 +374,7 @@
 <p>比如酸奶厂那道题，以后的星期可以用前一个星期生产的成本更低的酸奶，但之前的星期是不可用以后生产的，也就是说是局部比较，并不是统一的排序。</p>
 <p>而这道题，需要统一的排序，因此只比较相邻两个是不行的。</p>
 <p>&nbsp;</p>
-<p>刚开始想到了排序，但没有想到好的排序思路，觉得时长也不能作为依据，吃花数量也不能作为依据，没有想到这两个可以通过运算组成新的依据。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Cow</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> first;</span><br><span class="line">    <span class="keyword">int</span> second;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &amp;lt; (<span class="keyword">const</span> Cow &amp;amp; c) &#123;</span><br><span class="line">        <span class="keyword">return</span> first * c.second &amp;lt; second * c.first;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;; </span><br><span class="line">Cow cow[<span class="number">100000</span>];</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;amp;n);</span><br><span class="line">    ll sum = <span class="number">0</span>;</span><br><span class="line">    ll res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; n; i++) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;amp;cow[i].first, &amp;amp;cow[i].second);</span><br><span class="line">        sum += cow[i].second;   <span class="comment">//sum记录所有奶牛吃花的总速度 </span></span><br><span class="line">    &#125;</span><br><span class="line">    sort(cow, cow + n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        sum -= cow[i].second;   <span class="comment">//每送走一头牛，吃花总速度就减去这头牛的速度 </span></span><br><span class="line">        res += <span class="number">2</span> * sum * cow[i].first;      </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="built_in">cout</span> &amp;lt;&amp;lt; res &amp;lt;&amp;lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>刚开始想到了排序，但没有想到好的排序思路，觉得时长也不能作为依据，吃花数量也不能作为依据，没有想到这两个可以通过运算组成新的依据。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Cow</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> first;</span><br><span class="line">    <span class="keyword">int</span> second;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> Cow &amp; c) &#123;</span><br><span class="line">        <span class="keyword">return</span> first * c.second &lt; second * c.first;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;; </span><br><span class="line">Cow cow[<span class="number">100000</span>];</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    ll sum = <span class="number">0</span>;</span><br><span class="line">    ll res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;cow[i].first, &amp;cow[i].second);</span><br><span class="line">        sum += cow[i].second;   <span class="comment">//sum记录所有奶牛吃花的总速度 </span></span><br><span class="line">    &#125;</span><br><span class="line">    sort(cow, cow + n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        sum -= cow[i].second;   <span class="comment">//每送走一头牛，吃花总速度就减去这头牛的速度 </span></span><br><span class="line">        res += <span class="number">2</span> * sum * cow[i].first;      </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; res &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>&nbsp;</p>
 
       
@@ -356,6 +390,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+            <a href="/tags/OJ/" rel="tag"># OJ</a>
+          
+        </div>
       
 
       
@@ -450,7 +492,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -461,7 +503,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -472,7 +514,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -488,13 +530,13 @@
                 <span class="links-of-author-item">
                   <a href="https://github.com/urnotcarol" target="_blank" title="GitHub">
                     
-                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                      <i class="fa fa-fw fa-github"></i></a>
                 </span>
               
                 <span class="links-of-author-item">
                   <a href="mailto:carolunar@163.com" target="_blank" title="E-Mail">
                     
-                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                      <i class="fa fa-fw fa-envelope"></i></a>
                 </span>
               
             
@@ -514,6 +556,11 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -525,7 +572,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -543,7 +590,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
 
 
 
@@ -569,11 +616,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -651,6 +693,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>

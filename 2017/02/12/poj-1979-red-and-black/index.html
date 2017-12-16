@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="算法,OJ," />
 
 
 
@@ -77,17 +77,18 @@
 
 
 
-<meta name="description" content="POJ 1979 Red and Black 题意矩形屋顶上被覆盖了 H * W 的红色和黑色的瓦片。小明一开始站在黑瓦上，他可以向上下左右四个方向的黑瓦移动，但红瓦不行。给出小明的初始位置，问他可以移动到的位置总共有多少个。 思路深度优先搜索 #include  using namespace std; int w[100000000];int h[100000000];int res[1000">
+<meta name="description" content="POJ 1979 Red and Black 题意矩形屋顶上被覆盖了 H * W 的红色和黑色的瓦片。小明一开始站在黑瓦上，他可以向上下左右四个方向的黑瓦移动，但红瓦不行。给出小明的初始位置，问他可以移动到的位置总共有多少个。 思路深度优先搜索123456789101112131415161718192021222324252627282930313233343536373839404142434">
+<meta name="keywords" content="算法,OJ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="POJ 1979 Red and Black 题解">
 <meta property="og:url" content="//carolunar.com/2017/02/12/poj-1979-red-and-black/index.html">
 <meta property="og:site_name" content="Carol的博客">
-<meta property="og:description" content="POJ 1979 Red and Black 题意矩形屋顶上被覆盖了 H * W 的红色和黑色的瓦片。小明一开始站在黑瓦上，他可以向上下左右四个方向的黑瓦移动，但红瓦不行。给出小明的初始位置，问他可以移动到的位置总共有多少个。 思路深度优先搜索 #include  using namespace std; int w[100000000];int h[100000000];int res[1000">
+<meta property="og:description" content="POJ 1979 Red and Black 题意矩形屋顶上被覆盖了 H * W 的红色和黑色的瓦片。小明一开始站在黑瓦上，他可以向上下左右四个方向的黑瓦移动，但红瓦不行。给出小明的初始位置，问他可以移动到的位置总共有多少个。 思路深度优先搜索123456789101112131415161718192021222324252627282930313233343536373839404142434">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-09T15:31:04.305Z">
+<meta property="og:updated_time" content="2017-12-16T03:38:18.541Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="POJ 1979 Red and Black 题解">
-<meta name="twitter:description" content="POJ 1979 Red and Black 题意矩形屋顶上被覆盖了 H * W 的红色和黑色的瓦片。小明一开始站在黑瓦上，他可以向上下左右四个方向的黑瓦移动，但红瓦不行。给出小明的初始位置，问他可以移动到的位置总共有多少个。 思路深度优先搜索 #include  using namespace std; int w[100000000];int h[100000000];int res[1000">
+<meta name="twitter:description" content="POJ 1979 Red and Black 题意矩形屋顶上被覆盖了 H * W 的红色和黑色的瓦片。小明一开始站在黑瓦上，他可以向上下左右四个方向的黑瓦移动，但红瓦不行。给出小明的初始位置，问他可以移动到的位置总共有多少个。 思路深度优先搜索123456789101112131415161718192021222324252627282930313233343536373839404142434">
 
 
 
@@ -95,9 +96,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '5.1.3',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -300,6 +301,39 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/搜索/" itemprop="url" rel="index">
+                    <span itemprop="name">搜索</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -327,50 +361,11 @@
       
 
       
-        <p><span style="color: #008080;"><a href="http://poj.org/problem?id=1979" target="_blank" rel="noopener">POJ 1979 Red and Black</a></span></p>
+        <p><a href="http://poj.org/problem?id=1979" target="_blank" rel="noopener">POJ 1979 Red and Black</a></p>
 <h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>矩形屋顶上被覆盖了 H * W 的红色和黑色的瓦片。小明一开始站在黑瓦上，他可以向上下左右四个方向的黑瓦移动，但红瓦不行。给出小明的初始位置，问他可以移动到的位置总共有多少个。</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>深度优先搜索</p>
-<p><pre class="theme:twilight font:consolas top-margin:35 bottom-margin:65 lang:c++ decode:true ">#include <iostream></iostream></pre></p>
-<p>using namespace std;</p>
-<p>int w[100000000];<br>int h[100000000];<br>int res[100000000];<br>char tiles[20][20];</p>
-<p>void dfs(int index, int x, int y) {<br>    tiles[x][y] = ‘#’;<br>    int dx[4] = {-1, 0, 1, 0};<br>    int dy[4] = {0, -1, 0, 1};<br>    for (int i = 0; i &lt; 4; i++) {<br>        int nx = x + dx[i];<br>        int ny = y + dy[i];<br>        if (nx &gt;= 0 &amp;&amp; ny &gt;= 0 &amp;&amp; nx &lt; h[index] &amp;&amp; ny &lt; w[index] &amp;&amp; tiles[nx][ny] == ‘.’) {<br>            res[index]++;<br>            dfs(index, nx, ny);<br>        }<br>    }<br>    return;<br>}</p>
-<p>void solve(int index) {<br>    res[index] = 1;<br>    for (int i = 0; i &lt; h[index]; i++) {<br>        for (int j = 0; j &lt; w[index]; j++) {<br>            if (tiles[i][j] == ‘@’) {<br>                dfs(index, i, j);<br>            }<br>        }<br>    }<br>}<br>int main() {<br>    int index = 0;<br>    do {<br>        cin &gt;&gt; w[index] &gt;&gt; h[index];<br>         for (int i = 0; i &lt; h[index]; i++) {<br>            for (int j = 0; j &lt; w[index]; j++) {<br>               cin &gt;&gt; tiles[i][j];<br>           }<br>        }<br>        solve(index);<br>        index++;<br>    }<br>    while (w[index - 1] &gt; 0 &amp;&amp; h[index - 1] &gt; 0);</p>
-<pre><code>for (int i = 0; i &amp;lt; index -1; i++) {
-    cout &amp;lt;&amp;lt; res[i] &amp;lt;&amp;lt; endl;
-}
-
-return 0;
-</code></pre><p>}<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//第一个AC的OJ题目，加油</span></span><br><span class="line"></span><br><span class="line">* * *</span><br><span class="line"></span><br><span class="line">## <span class="number">2017.4</span><span class="number">.7</span> 温习</span><br><span class="line"></span><br><span class="line">重写了一下</span><br></pre></td></tr></table></figure></p>
-<p>#include <iostream></iostream></p>
-<p>#include <stdio.h></stdio.h></p>
-<p>#define ONLINE_JUDGE<br>using namespace std;<br>const int MAX_N = 20 + 4;<br>int H;<br>int W;<br>char tile[MAX_N][MAX_N];<br>int sx;<br>int sy;<br>int res;<br>int dx[4] = {-1, 0, 1, 0};<br>int dy[4] = {0, -1, 0, 1};</p>
-<p>void dfs(int x, int y) {<br>    int nx;<br>    int ny;<br>    tile[x][y] = ‘#’;<br>    for (int i = 0; i &lt; 4; i++) {<br>        nx = x + dx[i];<br>        ny = y + dy[i];<br>        if (nx &gt;= 0 &amp;&amp; nx &lt; H &amp;&amp; ny &gt;= 0 &amp;&amp; ny &lt; W &amp;&amp; tile[nx][ny] == ‘.’) {<br>            res++;<br>//            tile[nx][ny] = ‘#’;<br>            dfs(nx, ny);<br>        }<br>    }<br>    return;<br>}</p>
-<p>int main() {</p>
-<pre><code>#ifndef ONLINE_JUDGE
-freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);
-#endif
-while (scanf(&quot;%d %d&quot;, &amp;amp;W, &amp;amp;H) &amp;amp;&amp;amp; W != 0) {
-    for (int i = 0; i &amp;lt; H; i++) {
-        cin.ignore();
-        for (int j = 0; j &amp;lt; W; j++) {
-            scanf(&quot;%c&quot;, &amp;amp;tile[i][j]);
-            if (tile[i][j] == &apos;@&apos;) {
-                sx = i;
-                sy = j;
-                tile[i][j] = &apos;.&apos;;
-            }
-        }
-    }
-    res = 1;
-    dfs(sx, sy);
-    printf(&quot;%d\n&quot;, res);        
-}
-#ifndef ONLINE_JUDGE
-fclose(stdin);
-#endif
-return 0;        
-</code></pre><p>}<br>```</p>
-<p>&nbsp;</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>深度优先搜索<br><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">`<span class="meta">#include &lt;iostream&gt;</span></span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> w[<span class="number">100000000</span>];</span><br><span class="line"><span class="keyword">int</span> h[<span class="number">100000000</span>];</span><br><span class="line"><span class="keyword">int</span> res[<span class="number">100000000</span>];</span><br><span class="line"><span class="keyword">char</span> tiles[<span class="number">20</span>][<span class="number">20</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> dfs(<span class="keyword">int</span> <span class="keyword">index</span>, <span class="keyword">int</span> x, <span class="keyword">int</span> y) &#123;</span><br><span class="line">    tiles[x][y] = <span class="string">'#'</span>;</span><br><span class="line">    <span class="keyword">int</span> dx[<span class="number">4</span>] = &#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> dy[<span class="number">4</span>] = &#123;<span class="number">0</span>, <span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> nx = x + dx[i];</span><br><span class="line">        <span class="keyword">int</span> ny = y + dy[i];</span><br><span class="line">        <span class="keyword">if</span> (nx &gt;= <span class="number">0</span> &amp;&amp; ny &gt;= <span class="number">0</span> &amp;&amp; nx &lt; h[<span class="keyword">index</span>] &amp;&amp; ny &lt; w[<span class="keyword">index</span>] &amp;&amp; tiles[nx][ny] == <span class="string">'.'</span>) &#123;</span><br><span class="line">            res[<span class="keyword">index</span>]++;</span><br><span class="line">            dfs(<span class="keyword">index</span>, nx, ny);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> solve(<span class="keyword">int</span> <span class="keyword">index</span>) &#123;</span><br><span class="line">    res[<span class="keyword">index</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; h[<span class="keyword">index</span>]; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; w[<span class="keyword">index</span>]; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (tiles[i][j] == <span class="string">'@'</span>) &#123;</span><br><span class="line">                dfs(<span class="keyword">index</span>, i, j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">int</span> main() &#123;</span><br><span class="line">    <span class="keyword">int</span> <span class="keyword">index</span> = <span class="number">0</span>;</span><br><span class="line">    do &#123;</span><br><span class="line">        cin &gt;&gt; w[<span class="keyword">index</span>] &gt;&gt; h[<span class="keyword">index</span>];</span><br><span class="line">         <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; h[<span class="keyword">index</span>]; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; w[<span class="keyword">index</span>]; j++) &#123;</span><br><span class="line">               cin &gt;&gt; tiles[i][j];</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        solve(<span class="keyword">index</span>);</span><br><span class="line">        <span class="keyword">index</span>++;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">while</span> (w[<span class="keyword">index</span> - <span class="number">1</span>] &gt; <span class="number">0</span> &amp;&amp; h[<span class="keyword">index</span> - <span class="number">1</span>] &gt; <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">index</span> <span class="number">-1</span>; i++) &#123;</span><br><span class="line">        cout &lt;&lt; res[i] &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>//第一个AC的OJ题目，加油</p>
+<h2 id="2017-4-7-温习"><a href="#2017-4-7-温习" class="headerlink" title="2017.4.7 温习"></a>2017.4.7 温习</h2><p>重写了一下<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ONLINE_JUDGE</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">20</span> + <span class="number">4</span>;</span><br><span class="line"><span class="keyword">int</span> H;</span><br><span class="line"><span class="keyword">int</span> W;</span><br><span class="line"><span class="keyword">char</span> tile[MAX_N][MAX_N];</span><br><span class="line"><span class="keyword">int</span> sx;</span><br><span class="line"><span class="keyword">int</span> sy;</span><br><span class="line"><span class="keyword">int</span> res;</span><br><span class="line"><span class="keyword">int</span> dx[<span class="number">4</span>] = &#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> dy[<span class="number">4</span>] = &#123;<span class="number">0</span>, <span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> nx;</span><br><span class="line">    <span class="keyword">int</span> ny;</span><br><span class="line">    tile[x][y] = <span class="string">'#'</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">        nx = x + dx[i];</span><br><span class="line">        ny = y + dy[i];</span><br><span class="line">        <span class="keyword">if</span> (nx &gt;= <span class="number">0</span> &amp;&amp; nx &lt; H &amp;&amp; ny &gt;= <span class="number">0</span> &amp;&amp; ny &lt; W &amp;&amp; tile[nx][ny] == <span class="string">'.'</span>) &#123;</span><br><span class="line">            res++;</span><br><span class="line"><span class="comment">//            tile[nx][ny] = '#';</span></span><br><span class="line">            dfs(nx, ny);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">    freopen(<span class="string">"in.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;W, &amp;H) &amp;&amp; W != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; H; i++) &#123;</span><br><span class="line">            <span class="built_in">cin</span>.ignore();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; W; j++) &#123;</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">"%c"</span>, &amp;tile[i][j]);</span><br><span class="line">                <span class="keyword">if</span> (tile[i][j] == <span class="string">'@'</span>) &#123;</span><br><span class="line">                    sx = i;</span><br><span class="line">                    sy = j;</span><br><span class="line">                    tile[i][j] = <span class="string">'.'</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        res = <span class="number">1</span>;</span><br><span class="line">        dfs(sx, sy);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, res);        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">    fclose(<span class="built_in">stdin</span>);</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <ol>
 <li>无需用数组保存各个用例的结果，在用例间直接输出就可以</li>
 <li>注意状态的改变或者标记是在找到子递归的时候进行还是每次进入新递归之后进行</li>
@@ -390,6 +385,14 @@ return 0;
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+            <a href="/tags/OJ/" rel="tag"># OJ</a>
+          
+        </div>
       
 
       
@@ -489,7 +492,7 @@ return 0;
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -500,7 +503,7 @@ return 0;
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -511,7 +514,7 @@ return 0;
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -527,13 +530,13 @@ return 0;
                 <span class="links-of-author-item">
                   <a href="https://github.com/urnotcarol" target="_blank" title="GitHub">
                     
-                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                      <i class="fa fa-fw fa-github"></i></a>
                 </span>
               
                 <span class="links-of-author-item">
                   <a href="mailto:carolunar@163.com" target="_blank" title="E-Mail">
                     
-                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                      <i class="fa fa-fw fa-envelope"></i></a>
                 </span>
               
             
@@ -560,7 +563,7 @@ return 0;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x9898;&#x610F;" class="headerlink" title="&#x9898;&#x610F;"></a>&#x9898;&#x610F;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x601D;&#x8DEF;" class="headerlink" title="&#x601D;&#x8DEF;"></a>&#x601D;&#x8DEF;</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x9898;&#x610F;" class="headerlink" title="&#x9898;&#x610F;"></a>&#x9898;&#x610F;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x601D;&#x8DEF;" class="headerlink" title="&#x601D;&#x8DEF;"></a>&#x601D;&#x8DEF;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-4-7-温习"><span class="nav-number">3.</span> <span class="nav-text"><a href="#2017-4-7-&#x6E29;&#x4E60;" class="headerlink" title="2017.4.7 &#x6E29;&#x4E60;"></a>2017.4.7 &#x6E29;&#x4E60;</span></a></li></ol></div>
             
 
           </div>
@@ -568,6 +571,11 @@ return 0;
       <!--/noindex-->
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
       
 
     </div>
@@ -580,7 +588,7 @@ return 0;
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -598,7 +606,7 @@ return 0;
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
 
 
 
@@ -624,11 +632,6 @@ return 0;
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -706,6 +709,13 @@ return 0;
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>

@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="算法,OJ," />
 
 
 
@@ -78,13 +78,14 @@
 
 
 <meta name="description" content="HDU 2602 Bone Collector 最简单的01背包问题123456789101112131415161718192021222324252627282930313233343536#include &amp;lt;stdio.h&amp;gt;#include &amp;lt;algorithm&amp;gt;#include &amp;lt;memory.h&amp;gt;using namespace std;const in">
+<meta name="keywords" content="算法,OJ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="背包问题 HDU 2602 Bone Collector + HDU 1114 Piggy-Bank">
 <meta property="og:url" content="//carolunar.com/2017/02/19/pack-problem/index.html">
 <meta property="og:site_name" content="Carol的博客">
 <meta property="og:description" content="HDU 2602 Bone Collector 最简单的01背包问题123456789101112131415161718192021222324252627282930313233343536#include &amp;lt;stdio.h&amp;gt;#include &amp;lt;algorithm&amp;gt;#include &amp;lt;memory.h&amp;gt;using namespace std;const in">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-09T15:31:04.407Z">
+<meta property="og:updated_time" content="2017-12-16T03:29:00.823Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="背包问题 HDU 2602 Bone Collector + HDU 1114 Piggy-Bank">
 <meta name="twitter:description" content="HDU 2602 Bone Collector 最简单的01背包问题123456789101112131415161718192021222324252627282930313233343536#include &amp;lt;stdio.h&amp;gt;#include &amp;lt;algorithm&amp;gt;#include &amp;lt;memory.h&amp;gt;using namespace std;const in">
@@ -95,9 +96,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '5.1.3',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -300,6 +301,39 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/动态规划/" itemprop="url" rel="index">
+                    <span itemprop="name">动态规划</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -328,9 +362,9 @@
 
       
         <p>HDU 2602 Bone Collector</p>
-<p>最简单的01背包问题<br><figure class="highlight plain"><figcaption><span><iostream></iostream></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;memory.h&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int MAX_N = 1000;</span><br><span class="line"></span><br><span class="line">int N;</span><br><span class="line">int V;</span><br><span class="line">int value[MAX_N + 1];</span><br><span class="line">int vol[MAX_N + 1];</span><br><span class="line">long long dp[MAX_N + 1];</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    int input;</span><br><span class="line">    cin &amp;gt;&amp;gt; input;</span><br><span class="line">    while(input-- &amp;gt; 0) &#123;</span><br><span class="line">        cin &amp;gt;&amp;gt; N &amp;gt;&amp;gt; V;</span><br><span class="line">        for (int i = 0; i &amp;lt; N; i++) &#123;</span><br><span class="line">            scanf(&quot;%d&quot;, &amp;amp;value[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        for (int i = 0; i &amp;lt; N; i++) &#123;</span><br><span class="line">            scanf(&quot;%d&quot;, &amp;amp;vol[i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for (int i = 0; i &amp;lt; N; i++) &#123;</span><br><span class="line">            for (int j = V; j &amp;gt;= vol[i]; j--) &#123;</span><br><span class="line">                dp[j] = max(dp[j], dp[j - vol[i]] + value[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%lld\n&quot;, dp[V]);</span><br><span class="line">        memset(dp, 0, sizeof(dp));</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>最简单的01背包问题<br><figure class="highlight plain"><figcaption><span><iostream></iostream></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;memory.h&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int MAX_N = 1000;</span><br><span class="line"></span><br><span class="line">int N;</span><br><span class="line">int V;</span><br><span class="line">int value[MAX_N + 1];</span><br><span class="line">int vol[MAX_N + 1];</span><br><span class="line">long long dp[MAX_N + 1];</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    int input;</span><br><span class="line">    cin &gt;&gt; input;</span><br><span class="line">    while(input-- &gt; 0) &#123;</span><br><span class="line">        cin &gt;&gt; N &gt;&gt; V;</span><br><span class="line">        for (int i = 0; i &lt; N; i++) &#123;</span><br><span class="line">            scanf(&quot;%d&quot;, &amp;value[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        for (int i = 0; i &lt; N; i++) &#123;</span><br><span class="line">            scanf(&quot;%d&quot;, &amp;vol[i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for (int i = 0; i &lt; N; i++) &#123;</span><br><span class="line">            for (int j = V; j &gt;= vol[i]; j--) &#123;</span><br><span class="line">                dp[j] = max(dp[j], dp[j - vol[i]] + value[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%lld\n&quot;, dp[V]);</span><br><span class="line">        memset(dp, 0, sizeof(dp));</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=1114" target="_blank" rel="noopener">HDU 1114 Piggy-Bank</a></p>
-<p>完全背包：包中的每个物品有无限多个<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;memory.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">500</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_E = <span class="number">10000</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">int</span> T;</span><br><span class="line"><span class="keyword">int</span> E;</span><br><span class="line"><span class="keyword">int</span> F;</span><br><span class="line"><span class="keyword">int</span> N;</span><br><span class="line">pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; coin[MAX_N + <span class="number">3</span>];</span><br><span class="line"><span class="keyword">int</span> dp[MAX_E + <span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;amp;E, &amp;amp;F);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;amp;N);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; N; i++) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;amp;coin[i].first, &amp;amp;coin[i].second);</span><br><span class="line">        &#125;</span><br><span class="line">        E = F - E;</span><br><span class="line">        <span class="built_in">memset</span>(dp, INF, <span class="keyword">sizeof</span>(dp));</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; N; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = coin[i].second; j &amp;lt;= E; j++) &#123;</span><br><span class="line">                dp[j] = min(dp[j], dp[j - coin[i].second] + coin[i].first);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (dp[E] != INF) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"The minimum amount of money in the piggy-bank is %d.\n"</span>, dp[E]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"This is impossible.\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>完全背包：包中的每个物品有无限多个<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;memory.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">500</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_E = <span class="number">10000</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">int</span> T;</span><br><span class="line"><span class="keyword">int</span> E;</span><br><span class="line"><span class="keyword">int</span> F;</span><br><span class="line"><span class="keyword">int</span> N;</span><br><span class="line">pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; coin[MAX_N + <span class="number">3</span>];</span><br><span class="line"><span class="keyword">int</span> dp[MAX_E + <span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;E, &amp;F);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;N);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;coin[i].first, &amp;coin[i].second);</span><br><span class="line">        &#125;</span><br><span class="line">        E = F - E;</span><br><span class="line">        <span class="built_in">memset</span>(dp, INF, <span class="keyword">sizeof</span>(dp));</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = coin[i].second; j &lt;= E; j++) &#123;</span><br><span class="line">                dp[j] = min(dp[j], dp[j - coin[i].second] + coin[i].first);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (dp[E] != INF) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"The minimum amount of money in the piggy-bank is %d.\n"</span>, dp[E]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"This is impossible.\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>&nbsp;</p>
 <blockquote>
 <p>&nbsp;</p>
@@ -340,7 +374,7 @@
 <p>常见的背包要求得到最大的价值，而像上面的 HDU1114 这道题求的是最小的价值。针对这种要求，除了把 max 换成 min 之外，dp 数组初始化也不再用 −∞，而是用 +∞。</p>
 <p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=2191" target="_blank" rel="noopener">HDU 2192 512</a></p>
 <p>多重背包，即每个物品的数量有限。</p>
-<p>测试好多数据都对，一直 WA，没有找到原因，暂作阙疑吧……<br><figure class="highlight plain"><figcaption><span><iostream></iostream></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;memory.h&gt;</span><br><span class="line"></span><br><span class="line">const int MAX_N = 100;</span><br><span class="line">int C;</span><br><span class="line">int n;</span><br><span class="line">int m;</span><br><span class="line">int p;</span><br><span class="line">int h;</span><br><span class="line">int c;</span><br><span class="line">long long dp[MAX_N + 5];</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;amp;C);</span><br><span class="line">    while(C--) &#123;</span><br><span class="line">        memset(dp, 0, sizeof(dp));</span><br><span class="line">        scanf(&quot;%d %d&quot;, &amp;amp;n, &amp;amp;m);</span><br><span class="line">        for (int i = 0; i &amp;lt; m; i++) &#123;</span><br><span class="line">            scanf(&quot;%d %d %d&quot;, &amp;amp;p, &amp;amp;h, &amp;amp;c);</span><br><span class="line">            if (p * c &amp;gt;= n) &#123;</span><br><span class="line">                for (int j = p; j &amp;lt;= n; j++) &#123;</span><br><span class="line">                    dp[j] = max(dp[j], dp[j - p] + h);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                int k = 1;</span><br><span class="line">                while (k &amp;lt; c) &#123;</span><br><span class="line">                    for (int j = n; j &amp;gt;= p; j--) &#123;</span><br><span class="line">                        dp[j] = max(dp[j], dp[j - k * p] + k * h);</span><br><span class="line">                    &#125;</span><br><span class="line">                    c -= k;</span><br><span class="line">                    k *= 2;</span><br><span class="line">                &#125;                </span><br><span class="line">                for (int j = n; j &amp;gt;= p; j--) &#123;</span><br><span class="line">                    dp[j] = max(dp[j], dp[j - c * p] + c * h);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &amp;lt;&amp;lt; dp[n] &amp;lt;&amp;lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>测试好多数据都对，一直 WA，没有找到原因，暂作阙疑吧……<br><figure class="highlight plain"><figcaption><span><iostream></iostream></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;memory.h&gt;</span><br><span class="line"></span><br><span class="line">const int MAX_N = 100;</span><br><span class="line">int C;</span><br><span class="line">int n;</span><br><span class="line">int m;</span><br><span class="line">int p;</span><br><span class="line">int h;</span><br><span class="line">int c;</span><br><span class="line">long long dp[MAX_N + 5];</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;C);</span><br><span class="line">    while(C--) &#123;</span><br><span class="line">        memset(dp, 0, sizeof(dp));</span><br><span class="line">        scanf(&quot;%d %d&quot;, &amp;n, &amp;m);</span><br><span class="line">        for (int i = 0; i &lt; m; i++) &#123;</span><br><span class="line">            scanf(&quot;%d %d %d&quot;, &amp;p, &amp;h, &amp;c);</span><br><span class="line">            if (p * c &gt;= n) &#123;</span><br><span class="line">                for (int j = p; j &lt;= n; j++) &#123;</span><br><span class="line">                    dp[j] = max(dp[j], dp[j - p] + h);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                int k = 1;</span><br><span class="line">                while (k &lt; c) &#123;</span><br><span class="line">                    for (int j = n; j &gt;= p; j--) &#123;</span><br><span class="line">                        dp[j] = max(dp[j], dp[j - k * p] + k * h);</span><br><span class="line">                    &#125;</span><br><span class="line">                    c -= k;</span><br><span class="line">                    k *= 2;</span><br><span class="line">                &#125;                </span><br><span class="line">                for (int j = n; j &gt;= p; j--) &#123;</span><br><span class="line">                    dp[j] = max(dp[j], dp[j - c * p] + c * h);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; dp[n] &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>要点：</p>
 <p>01背包，节省空间用一维数组的话，关键在于<strong>逆序</strong>。</p>
 <p>完全背包，用一维数组，关键在于<strong>正序</strong>。</p>
@@ -367,6 +401,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+            <a href="/tags/OJ/" rel="tag"># OJ</a>
+          
+        </div>
       
 
       
@@ -461,7 +503,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -472,7 +514,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -483,7 +525,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -499,13 +541,13 @@
                 <span class="links-of-author-item">
                   <a href="https://github.com/urnotcarol" target="_blank" title="GitHub">
                     
-                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                      <i class="fa fa-fw fa-github"></i></a>
                 </span>
               
                 <span class="links-of-author-item">
                   <a href="mailto:carolunar@163.com" target="_blank" title="E-Mail">
                     
-                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                      <i class="fa fa-fw fa-envelope"></i></a>
                 </span>
               
             
@@ -525,6 +567,11 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -536,7 +583,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -554,7 +601,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
 
 
 
@@ -580,11 +627,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -662,6 +704,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>

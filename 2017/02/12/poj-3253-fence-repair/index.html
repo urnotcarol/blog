@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="算法,OJ," />
 
 
 
@@ -78,6 +78,7 @@
 
 
 <meta name="description" content="POJ 3253 Fence Repair  书中例题。 在看题解之前自己做了一下，用了错误的贪心策略：“越短的木棒切割的时间应该越晚”，局部来看是对的。 正确策略的局部也是这样的。 不过自己的想法不够全面，只想到了第一步。 例如需要1,2,3,4,5 五根木棒，我觉得应该： 先花15的代价切下来长度为5的， 再花10的代价切下来长度为4的， 再花6的代价切下来长度为3的， 最后花3的代价切下来长">
+<meta name="keywords" content="算法,OJ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="POJ 3253 Fence Repair 题解">
 <meta property="og:url" content="//carolunar.com/2017/02/12/poj-3253-fence-repair/index.html">
@@ -85,7 +86,7 @@
 <meta property="og:description" content="POJ 3253 Fence Repair  书中例题。 在看题解之前自己做了一下，用了错误的贪心策略：“越短的木棒切割的时间应该越晚”，局部来看是对的。 正确策略的局部也是这样的。 不过自己的想法不够全面，只想到了第一步。 例如需要1,2,3,4,5 五根木棒，我觉得应该： 先花15的代价切下来长度为5的， 再花10的代价切下来长度为4的， 再花6的代价切下来长度为3的， 最后花3的代价切下来长">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/948557/201702/948557-20170208155223213-748890318.png">
-<meta property="og:updated_time" content="2017-12-09T15:31:04.422Z">
+<meta property="og:updated_time" content="2017-12-16T06:34:33.316Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="POJ 3253 Fence Repair 题解">
 <meta name="twitter:description" content="POJ 3253 Fence Repair  书中例题。 在看题解之前自己做了一下，用了错误的贪心策略：“越短的木棒切割的时间应该越晚”，局部来看是对的。 正确策略的局部也是这样的。 不过自己的想法不够全面，只想到了第一步。 例如需要1,2,3,4,5 五根木棒，我觉得应该： 先花15的代价切下来长度为5的， 再花10的代价切下来长度为4的， 再花6的代价切下来长度为3的， 最后花3的代价切下来长">
@@ -97,9 +98,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '5.1.3',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -302,6 +303,39 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/贪心/" itemprop="url" rel="index">
+                    <span itemprop="name">贪心</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -343,7 +377,7 @@
 <p>这样代价一共是15+10+6+3=34，## 而最优策略代价为33.</p>
 <p>因此， 虽然说越长的木棒应该最先被切没错，但是对于选择最长木棒这件事，并不是直接从题目所需要的所有长度的木棒里面选最长的，而是：## 两根次长的也许可以拼成一根比当前最长更长的。</p>
 <h2 id="因此应该从小往大遍历，不断选取最短的两根木棒组成新木棒加入所需队列中，换个角度就是说：最短的木棒与次短的木棒应该是兄弟节点。"><a href="#因此应该从小往大遍历，不断选取最短的两根木棒组成新木棒加入所需队列中，换个角度就是说：最短的木棒与次短的木棒应该是兄弟节点。" class="headerlink" title="因此应该从小往大遍历，不断选取最短的两根木棒组成新木棒加入所需队列中，换个角度就是说：最短的木棒与次短的木棒应该是兄弟节点。"></a>因此应该从小往大遍历，不断选取最短的两根木棒组成新木棒加入所需队列中，换个角度就是说：最短的木棒与次短的木棒应该是兄弟节点。</h2><p>&nbsp;</p>
-<p>仔细领会错误和正确策略的区别（懒得开Visio了✧(≖ ◡ ≖✿)）：<br>1+2拼成3，3+3拼成6，此时需要6、5、4三根木棒，6便是最大的，而不是从一开始受限的角度所得出的5。<br><img src="http://images2015.cnblogs.com/blog/948557/201702/948557-20170208155223213-748890318.png" alt="null"><br>&nbsp;<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> plank[<span class="number">20000</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> slove() &#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> res = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">while</span> (n &amp;gt; <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> <span class="built_in">min</span> = <span class="number">0</span>;        <span class="comment">//最小的板的下标 </span></span><br><span class="line">        <span class="keyword">int</span> minNext = <span class="number">1</span>;    <span class="comment">//次小的板的下标 </span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">if</span> (plank[<span class="built_in">min</span>] &amp;gt; plank[minNext]) &#123;</span><br><span class="line">            swap(<span class="built_in">min</span>, minNext);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &amp;lt; n; i++) &#123;           <span class="comment">//找到最小和次小的两块板 </span></span><br><span class="line">            <span class="built_in">if</span> (plank[i] &amp;lt; plank[<span class="built_in">min</span>]) &#123;</span><br><span class="line">                minNext = <span class="built_in">min</span>;</span><br><span class="line">                <span class="built_in">min</span> = i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">else</span> <span class="built_in">if</span> (plank[i] &amp;lt; plank[minNext]) &#123;</span><br><span class="line">                minNext = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> t = plank[<span class="built_in">min</span>] + plank[minNext];</span><br><span class="line">        res += t;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">if</span> (<span class="built_in">min</span> == n - <span class="number">1</span>) &#123;                <span class="comment">//将拼合后的板加入到数组中，去掉原来的 </span></span><br><span class="line">            swap(<span class="built_in">min</span>, minNext); </span><br><span class="line">        &#125;</span><br><span class="line">        plank[<span class="built_in">min</span>] = t;</span><br><span class="line">        plank[minNext] = plank[n - <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">        n--;         </span><br><span class="line">    &#125;</span><br><span class="line">    cout &amp;lt;&amp;lt; res &amp;lt;&amp;lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> main() &#123;</span><br><span class="line">    cin &amp;gt;&amp;gt; n;</span><br><span class="line">    <span class="built_in">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; n; i++) &#123;</span><br><span class="line">        cin &amp;gt;&amp;gt; plank[i];</span><br><span class="line">    &#125;</span><br><span class="line">    slove();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> <span class="number">0</span>;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>仔细领会错误和正确策略的区别（懒得开Visio了✧(≖ ◡ ≖✿)）：<br>1+2拼成3，3+3拼成6，此时需要6、5、4三根木棒，6便是最大的，而不是从一开始受限的角度所得出的5。<br><img src="http://images2015.cnblogs.com/blog/948557/201702/948557-20170208155223213-748890318.png" alt="null"><br>&nbsp;<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> plank[<span class="number">20000</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> slove() &#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> res = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">while</span> (n &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> <span class="built_in">min</span> = <span class="number">0</span>;        <span class="comment">//最小的板的下标 </span></span><br><span class="line">        <span class="keyword">int</span> minNext = <span class="number">1</span>;    <span class="comment">//次小的板的下标 </span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">if</span> (plank[<span class="built_in">min</span>] &gt; plank[minNext]) &#123;</span><br><span class="line">            swap(<span class="built_in">min</span>, minNext);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; n; i++) &#123;           <span class="comment">//找到最小和次小的两块板</span></span><br><span class="line">            <span class="built_in">if</span> (plank[i] &lt; plank[<span class="built_in">min</span>]) &#123;</span><br><span class="line">                minNext = <span class="built_in">min</span>;</span><br><span class="line">                <span class="built_in">min</span> = i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">else</span> <span class="built_in">if</span> (plank[i] &lt; plank[minNext]) &#123;</span><br><span class="line">                minNext = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> t = plank[<span class="built_in">min</span>] + plank[minNext];</span><br><span class="line">        res += t;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">if</span> (<span class="built_in">min</span> == n - <span class="number">1</span>) &#123;                <span class="comment">//将拼合后的板加入到数组中，去掉原来的 </span></span><br><span class="line">            swap(<span class="built_in">min</span>, minNext); </span><br><span class="line">        &#125;</span><br><span class="line">        plank[<span class="built_in">min</span>] = t;</span><br><span class="line">        plank[minNext] = plank[n - <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">        n--;         </span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; res &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> main() &#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="built_in">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; plank[i];</span><br><span class="line">    &#125;</span><br><span class="line">    slove();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> <span class="number">0</span>;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>&nbsp;</p>
 
       
@@ -359,6 +393,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+            <a href="/tags/OJ/" rel="tag"># OJ</a>
+          
+        </div>
       
 
       
@@ -462,7 +504,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -473,7 +515,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -484,7 +526,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -500,13 +542,13 @@
                 <span class="links-of-author-item">
                   <a href="https://github.com/urnotcarol" target="_blank" title="GitHub">
                     
-                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                      <i class="fa fa-fw fa-github"></i></a>
                 </span>
               
                 <span class="links-of-author-item">
                   <a href="mailto:carolunar@163.com" target="_blank" title="E-Mail">
                     
-                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                      <i class="fa fa-fw fa-envelope"></i></a>
                 </span>
               
             
@@ -542,6 +584,11 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -553,7 +600,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -571,7 +618,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
 
 
 
@@ -597,11 +644,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -679,6 +721,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>

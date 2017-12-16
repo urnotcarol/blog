@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="算法,OJ," />
 
 
 
@@ -78,13 +78,14 @@
 
 
 <meta name="description" content="POJ 2431 Expedition  题意车子坏了，奶牛们要去修理厂修车。油箱里的汽油每公斤只能走一公里，初始距离修理厂 L 公里，有 P 公斤汽油。沿途有 N 个加油站，距离修理厂的距离以及可以加的汽油量各异。车子虽破，但却有一个巨大的油箱，想加多少就加多少。求车能不能开到修理厂，能的话求出最少加油次数，否则输出 -1 。 思路这是书上 2.4 加工并存储的数据结构 这一节的例题。用优先队列">
+<meta name="keywords" content="算法,OJ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="POJ 2431 Expedition 题解">
 <meta property="og:url" content="//carolunar.com/2017/03/10/poj-2431-expedition/index.html">
 <meta property="og:site_name" content="Carol的博客">
 <meta property="og:description" content="POJ 2431 Expedition  题意车子坏了，奶牛们要去修理厂修车。油箱里的汽油每公斤只能走一公里，初始距离修理厂 L 公里，有 P 公斤汽油。沿途有 N 个加油站，距离修理厂的距离以及可以加的汽油量各异。车子虽破，但却有一个巨大的油箱，想加多少就加多少。求车能不能开到修理厂，能的话求出最少加油次数，否则输出 -1 。 思路这是书上 2.4 加工并存储的数据结构 这一节的例题。用优先队列">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-09T15:33:26.943Z">
+<meta property="og:updated_time" content="2017-12-16T06:34:33.322Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="POJ 2431 Expedition 题解">
 <meta name="twitter:description" content="POJ 2431 Expedition  题意车子坏了，奶牛们要去修理厂修车。油箱里的汽油每公斤只能走一公里，初始距离修理厂 L 公里，有 P 公斤汽油。沿途有 N 个加油站，距离修理厂的距离以及可以加的汽油量各异。车子虽破，但却有一个巨大的油箱，想加多少就加多少。求车能不能开到修理厂，能的话求出最少加油次数，否则输出 -1 。 思路这是书上 2.4 加工并存储的数据结构 这一节的例题。用优先队列">
@@ -95,9 +96,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '5.1.3',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -300,6 +301,39 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/优先队列/" itemprop="url" rel="index">
+                    <span itemprop="name">优先队列</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -333,7 +367,7 @@
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>这是书上 2.4 加工并存储的数据结构 这一节的例题。用优先队列。</p>
 <p>优先队列是一种特殊的队列。普通的队列中，元素进入就排到队尾，出的话队头先出。优先队列是有优先权的元素先出，同样，一个元素进入的时候，就按其优先权排到自己该有的位置，就像做人一样，要搞清楚自己的定位。</p>
 <a id="more"></a>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">10000</span>;</span><br><span class="line"><span class="keyword">int</span> N;</span><br><span class="line">pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; <span class="built_in">stop</span>[MAX_N + <span class="number">4</span>];</span><br><span class="line"><span class="keyword">int</span> L;</span><br><span class="line"><span class="keyword">int</span> P;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> solve() &#123;</span><br><span class="line">    priority_queue&lt;<span class="keyword">int</span>&gt; que;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">stop</span>[N].first = L;</span><br><span class="line">    <span class="built_in">stop</span>[N].second = <span class="number">0</span>;</span><br><span class="line">    N++;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> pos = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> tank = P;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; N; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> d = <span class="built_in">stop</span>[i].first - pos;  <span class="comment">//distance to next fuel stop</span></span><br><span class="line">        <span class="built_in">while</span> (tank &amp;lt; d) &#123;</span><br><span class="line">            <span class="built_in">if</span> (que.empty()) &#123;</span><br><span class="line">                printf(<span class="string">"-1"</span>);</span><br><span class="line">                <span class="built_in">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            tank += que.top();</span><br><span class="line">            que.pop();</span><br><span class="line">            ans++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        tank -= d;</span><br><span class="line">        pos = <span class="built_in">stop</span>[i].first;</span><br><span class="line">        que.push(<span class="built_in">stop</span>[i].second);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    printf(<span class="string">"%d"</span>, ans);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> main() &#123;</span><br><span class="line">    scanf(<span class="string">"%d"</span>, &amp;amp;N);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; N; i++) &#123;</span><br><span class="line">        scanf(<span class="string">"%d %d"</span>, &amp;amp;<span class="built_in">stop</span>[i].first, &amp;amp;<span class="built_in">stop</span>[i].second);        </span><br><span class="line">    &#125;</span><br><span class="line">    scanf(<span class="string">"%d %d"</span>, &amp;amp;L, &amp;amp;P);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; N; i++) &#123;</span><br><span class="line">        <span class="built_in">stop</span>[i].first = L - <span class="built_in">stop</span>[i].first;  <span class="comment">//将距终点的距离改为距起点的距离，方便之后操作</span></span><br><span class="line">    &#125;</span><br><span class="line">    sort(<span class="built_in">stop</span>, <span class="built_in">stop</span> + N);</span><br><span class="line">    solve();</span><br><span class="line">    <span class="built_in">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">10000</span>;</span><br><span class="line"><span class="keyword">int</span> N;</span><br><span class="line">pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; <span class="built_in">stop</span>[MAX_N + <span class="number">4</span>];</span><br><span class="line"><span class="keyword">int</span> L;</span><br><span class="line"><span class="keyword">int</span> P;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> solve() &#123;</span><br><span class="line">    priority_queue&lt;<span class="keyword">int</span>&gt; que;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">stop</span>[N].first = L;</span><br><span class="line">    <span class="built_in">stop</span>[N].second = <span class="number">0</span>;</span><br><span class="line">    N++;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> pos = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> tank = P;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> d = <span class="built_in">stop</span>[i].first - pos;  <span class="comment">//distance to next fuel stop</span></span><br><span class="line">        <span class="built_in">while</span> (tank &lt; d) &#123;</span><br><span class="line">            <span class="built_in">if</span> (que.empty()) &#123;</span><br><span class="line">                printf(<span class="string">"-1"</span>);</span><br><span class="line">                <span class="built_in">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            tank += que.top();</span><br><span class="line">            que.pop();</span><br><span class="line">            ans++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        tank -= d;</span><br><span class="line">        pos = <span class="built_in">stop</span>[i].first;</span><br><span class="line">        que.push(<span class="built_in">stop</span>[i].second);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    printf(<span class="string">"%d"</span>, ans);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> main() &#123;</span><br><span class="line">    scanf(<span class="string">"%d"</span>, &amp;N);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">        scanf(<span class="string">"%d %d"</span>, &amp;<span class="built_in">stop</span>[i].first, &amp;<span class="built_in">stop</span>[i].second);</span><br><span class="line">    &#125;</span><br><span class="line">    scanf(<span class="string">"%d %d"</span>, &amp;L, &amp;P);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">        <span class="built_in">stop</span>[i].first = L - <span class="built_in">stop</span>[i].first;  <span class="comment">//将距终点的距离改为距起点的距离，方便之后操作</span></span><br><span class="line">    &#125;</span><br><span class="line">    sort(<span class="built_in">stop</span>, <span class="built_in">stop</span> + N);</span><br><span class="line">    solve();</span><br><span class="line">    <span class="built_in">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -348,6 +382,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+            <a href="/tags/OJ/" rel="tag"># OJ</a>
+          
+        </div>
       
 
       
@@ -451,7 +493,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -462,7 +504,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -473,7 +515,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -489,13 +531,13 @@
                 <span class="links-of-author-item">
                   <a href="https://github.com/urnotcarol" target="_blank" title="GitHub">
                     
-                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                      <i class="fa fa-fw fa-github"></i></a>
                 </span>
               
                 <span class="links-of-author-item">
                   <a href="mailto:carolunar@163.com" target="_blank" title="E-Mail">
                     
-                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                      <i class="fa fa-fw fa-envelope"></i></a>
                 </span>
               
             
@@ -531,6 +573,11 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -542,7 +589,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -560,7 +607,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
 
 
 
@@ -586,11 +633,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -668,6 +710,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>

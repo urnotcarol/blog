@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="算法,OJ," />
 
 
 
@@ -78,13 +78,14 @@
 
 
 <meta name="description" content="POJ 3669 Meteor Shower 题意：这个同学发现流星雨要来了，会对地球造成伤害于是决定逃跑。N颗流星会不定时降落在坐标轴第一象限300*300内的点上。给出每颗流星降落的坐标和时刻，求这个同学能否成功逃跑，能的话用时多少。 思路：略有一点tricky，无法变通了(@﹏@)~。看了码农场的代码。 这道题没有给出地图，所以需要自己生成地图。 关键的点在于：在生成地图的时候，将每个点的初">
+<meta name="keywords" content="算法,OJ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="POJ 3669 Meteor Shower 题解">
 <meta property="og:url" content="//carolunar.com/2017/02/12/poj-3669-meteor-shower/index.html">
 <meta property="og:site_name" content="Carol的博客">
 <meta property="og:description" content="POJ 3669 Meteor Shower 题意：这个同学发现流星雨要来了，会对地球造成伤害于是决定逃跑。N颗流星会不定时降落在坐标轴第一象限300*300内的点上。给出每颗流星降落的坐标和时刻，求这个同学能否成功逃跑，能的话用时多少。 思路：略有一点tricky，无法变通了(@﹏@)~。看了码农场的代码。 这道题没有给出地图，所以需要自己生成地图。 关键的点在于：在生成地图的时候，将每个点的初">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-09T15:33:26.928Z">
+<meta property="og:updated_time" content="2017-12-16T06:34:33.299Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="POJ 3669 Meteor Shower 题解">
 <meta name="twitter:description" content="POJ 3669 Meteor Shower 题意：这个同学发现流星雨要来了，会对地球造成伤害于是决定逃跑。N颗流星会不定时降落在坐标轴第一象限300*300内的点上。给出每颗流星降落的坐标和时刻，求这个同学能否成功逃跑，能的话用时多少。 思路：略有一点tricky，无法变通了(@﹏@)~。看了码农场的代码。 这道题没有给出地图，所以需要自己生成地图。 关键的点在于：在生成地图的时候，将每个点的初">
@@ -95,9 +96,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '5.1.3',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -300,6 +301,39 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/搜索/" itemprop="url" rel="index">
+                    <span itemprop="name">搜索</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -336,7 +370,7 @@
 <p>在游荡过程中一旦发现一个点永远不会被炸（&gt;last变量，或者等于INF？），说明找到了活命点，返回当前所用时间。</p>
 <p>如果一直到遍历完毕都找不到这样的点，说明无法逃跑，返回-1。</p>
 <a id="more"></a>
-<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><p>刚开始提交的时候总是Runtime Error，de了半天发现input数组本应该是50000，设置成了5000……这种粗心的错误要少犯啊<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;memory.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_INDEX = <span class="number">512</span>;</span><br><span class="line"><span class="keyword">int</span> eMap[MAX_INDEX][MAX_INDEX];</span><br><span class="line"><span class="keyword">bool</span> visited[MAX_INDEX][MAX_INDEX];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Meteor</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> x;</span><br><span class="line">    <span class="keyword">int</span> y;</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> Meteor P;</span><br><span class="line"></span><br><span class="line">Meteor input[<span class="number">50000</span>];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> last = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dx[<span class="number">5</span>] = &#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> dy[<span class="number">5</span>] = &#123;<span class="number">0</span>, <span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bfs</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(visited, <span class="number">0</span>, <span class="keyword">sizeof</span>(visited));</span><br><span class="line">    <span class="built_in">queue</span>&lt;P&gt; que;</span><br><span class="line">    P cur;</span><br><span class="line">    cur.x = <span class="number">0</span>;</span><br><span class="line">    cur.y = <span class="number">0</span>;</span><br><span class="line">    cur.t = <span class="number">0</span>;</span><br><span class="line">    que.push(cur);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (que.size()) &#123;        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">            cur = que.front();</span><br><span class="line">            cur.x += dx[i];</span><br><span class="line">            cur.y += dy[i];</span><br><span class="line">            cur.t++;</span><br><span class="line">            <span class="keyword">if</span> (cur.x &amp;gt;= <span class="number">0</span> &amp;amp;&amp;amp; cur.y &amp;gt;= <span class="number">0</span> &amp;amp;&amp;amp; cur.t &amp;lt; eMap[cur.x][cur.y] &amp;amp;&amp;amp; !visited[cur.x][cur.y]) &#123;</span><br><span class="line">                visited[cur.x][cur.y] = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">if</span> (eMap[cur.x][cur.y] &amp;gt; last) &#123;</span><br><span class="line">                    <span class="keyword">return</span> cur.t;</span><br><span class="line">                &#125;                </span><br><span class="line">                que.push(cur);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;        </span><br><span class="line">        que.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &amp;gt;&amp;gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; n; i++) &#123;</span><br><span class="line">        <span class="built_in">cin</span> &amp;gt;&amp;gt; input[i].x &amp;gt;&amp;gt; input[i].y &amp;gt;&amp;gt; input[i].t;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">memset</span>(eMap, <span class="number">0x7f</span>, <span class="keyword">sizeof</span>(eMap));   <span class="comment">//将地图上所有点的值设为极大值（按题意只需大于1000就可） </span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; n; i++) &#123;       <span class="comment">//创建地图 </span></span><br><span class="line">        last = max(last, input[i].t);   <span class="comment">//last变量记录流星下落的最晚时间 </span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &amp;lt; <span class="number">5</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">int</span> nx = input[i].x + dx[j];</span><br><span class="line">            <span class="keyword">int</span> ny = input[i].y + dy[j];</span><br><span class="line">            <span class="keyword">if</span> (nx &amp;gt;= <span class="number">0</span> &amp;amp;&amp;amp; ny &amp;gt;= <span class="number">0</span> &amp;amp;&amp;amp; eMap[nx][ny] &amp;gt; input[i].t) &#123;</span><br><span class="line">                eMap[nx][ny] = input[i].t;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;     </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (eMap[<span class="number">0</span>][<span class="number">0</span>] == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">else</span> &#123; </span><br><span class="line">        <span class="built_in">cout</span> &amp;lt;&amp;lt; bfs() &amp;lt;&amp;lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><p>刚开始提交的时候总是Runtime Error，de了半天发现input数组本应该是50000，设置成了5000……这种粗心的错误要少犯啊<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;memory.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_INDEX = <span class="number">512</span>;</span><br><span class="line"><span class="keyword">int</span> eMap[MAX_INDEX][MAX_INDEX];</span><br><span class="line"><span class="keyword">bool</span> visited[MAX_INDEX][MAX_INDEX];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Meteor</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> x;</span><br><span class="line">    <span class="keyword">int</span> y;</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> Meteor P;</span><br><span class="line"></span><br><span class="line">Meteor input[<span class="number">50000</span>];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> last = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dx[<span class="number">5</span>] = &#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> dy[<span class="number">5</span>] = &#123;<span class="number">0</span>, <span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bfs</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(visited, <span class="number">0</span>, <span class="keyword">sizeof</span>(visited));</span><br><span class="line">    <span class="built_in">queue</span>&lt;P&gt; que;</span><br><span class="line">    P cur;</span><br><span class="line">    cur.x = <span class="number">0</span>;</span><br><span class="line">    cur.y = <span class="number">0</span>;</span><br><span class="line">    cur.t = <span class="number">0</span>;</span><br><span class="line">    que.push(cur);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (que.size()) &#123;        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">            cur = que.front();</span><br><span class="line">            cur.x += dx[i];</span><br><span class="line">            cur.y += dy[i];</span><br><span class="line">            cur.t++;</span><br><span class="line">            <span class="keyword">if</span> (cur.x &gt;= <span class="number">0</span> &amp;&amp; cur.y &gt;= <span class="number">0</span> &amp;&amp; cur.t &lt; eMap[cur.x][cur.y] &amp;&amp; !visited[cur.x][cur.y]) &#123;</span><br><span class="line">                visited[cur.x][cur.y] = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">if</span> (eMap[cur.x][cur.y] &gt; last) &#123;</span><br><span class="line">                    <span class="keyword">return</span> cur.t;</span><br><span class="line">                &#125;                </span><br><span class="line">                que.push(cur);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;        </span><br><span class="line">        que.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; input[i].x &gt;&gt; input[i].y &gt;&gt; input[i].t;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">memset</span>(eMap, <span class="number">0x7f</span>, <span class="keyword">sizeof</span>(eMap));   <span class="comment">//将地图上所有点的值设为极大值（按题意只需大于1000就可） </span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;       <span class="comment">//创建地图</span></span><br><span class="line">        last = max(last, input[i].t);   <span class="comment">//last变量记录流星下落的最晚时间 </span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">5</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">int</span> nx = input[i].x + dx[j];</span><br><span class="line">            <span class="keyword">int</span> ny = input[i].y + dy[j];</span><br><span class="line">            <span class="keyword">if</span> (nx &gt;= <span class="number">0</span> &amp;&amp; ny &gt;= <span class="number">0</span> &amp;&amp; eMap[nx][ny] &gt; input[i].t) &#123;</span><br><span class="line">                eMap[nx][ny] = input[i].t;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;     </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (eMap[<span class="number">0</span>][<span class="number">0</span>] == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">else</span> &#123; </span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; bfs() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这段代码里的结构体变量Meteor，又被typedef为P，不是多此一举。是因为这个变量有两个用途：</p>
 <p>1 接收输入流，此时x，y代表流星将要下落的坐标，t代表下落时刻；</p>
 <p>2 在BFS的时候，标志该同学此时所处位置，此时x，y代表该同学当前坐标，t代表目前为止所花时间。</p>
@@ -356,6 +390,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+            <a href="/tags/OJ/" rel="tag"># OJ</a>
+          
+        </div>
       
 
       
@@ -459,7 +501,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -470,7 +512,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -481,7 +523,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -497,13 +539,13 @@
                 <span class="links-of-author-item">
                   <a href="https://github.com/urnotcarol" target="_blank" title="GitHub">
                     
-                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                      <i class="fa fa-fw fa-github"></i></a>
                 </span>
               
                 <span class="links-of-author-item">
                   <a href="mailto:carolunar@163.com" target="_blank" title="E-Mail">
                     
-                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                      <i class="fa fa-fw fa-envelope"></i></a>
                 </span>
               
             
@@ -539,6 +581,11 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -550,7 +597,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -568,7 +615,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
 
 
 
@@ -594,11 +641,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -676,6 +718,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
