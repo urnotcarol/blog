@@ -415,6 +415,166 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="//carolunar.com/2017/08/27/this in arrow function/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Carolunar">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/blogImg/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Carol的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/27/this in arrow function/" itemprop="url">JavaScript 箭头函数中的 this 问题 & 脑洞</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-27T16:00:00+08:00">
+                2017-08-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>在尝试自己实现数组的高阶函数<code>reduce</code>的过程中，发现箭头函数内识别不到我想要的<code>this</code>。</p>
+<p>用普通函数实现<code>reduce</code>是这样的：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.myReduce = <span class="function"><span class="keyword">function</span> (<span class="params">f, initialValue</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> result = initialValue;</span><br><span class="line">    <span class="keyword">this</span>.forEach(<span class="function"><span class="params">elem</span> =&gt;</span> &#123;</span><br><span class="line">        result = f(result, elem);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> sum = arr.myReduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;<span class="keyword">return</span> a + b&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sum);</span><br><span class="line"><span class="comment">// [1, 2, 3]</span></span><br><span class="line"><span class="comment">// 6</span></span><br></pre></td></tr></table></figure></p>
+<p>当我想写成箭头函数的形式时，出现问题：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.myReduce = <span class="function">(<span class="params">f, initialValue</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> result = initialValue;</span><br><span class="line">    <span class="keyword">this</span>.forEach(<span class="function"><span class="params">elem</span> =&gt;</span> &#123;</span><br><span class="line">        result = f(result, elem);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> sum = arr.myReduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;<span class="keyword">return</span> a + b&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sum);</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123;&#125;</span></span><br><span class="line"><span class="comment">// TypeError: this.forEach is not a function</span></span><br></pre></td></tr></table></figure></p>
+<p><code>console.log(this)</code>这句的结果，在node中是一个空对象<code>{}</code>，在浏览器中则是当前的全局对象window：<code>Window {stop: ƒ, open: ƒ, alert: ƒ, confirm: ƒ, prompt: ƒ, …}</code>，无论怎样都不是预想中的调用<code>myReduce</code>这个方法的数组<code>arr</code>。看来箭头函数并不是我起初以为的仅仅是<code>foo function() {}</code>形式的简写。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>经过多方搜索，结论如下：</p>
+<p>箭头函数和普通函数的区别在于箭头函数内部的<code>this</code>遵从词法作用域（静态作用域），也就是在这个箭头函数定义时就绑定了上下文的<code>this</code>，亦即离它最近的一个函数的<code>this</code>，如果没有，那就是全局对象，此后不会再改变。而普通函数的<code>this</code>是在运行时确定的，谁调用它，它就认谁的<code>this</code>（普通函数内除<code>this</code>之外的其他变量也遵从词法作用域原则，这也是闭包得以实现的基础）。</p>
+<h3 id="箭头函数的优点"><a href="#箭头函数的优点" class="headerlink" title="箭头函数的优点"></a>箭头函数的优点</h3><p>箭头函数的这种好处在于，因为它的<code>this</code>一直都绑定了定义时的上下文，可以避免在使用「函数调用模式」调用普通函数时，<code>this</code>会被绑定到全局对象这一设计上的「错误」（因为这时候没人调用它了，见《JavaScript语言精粹》4.3节）。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> me = &#123;</span><br><span class="line">    name: <span class="string">"carol"</span>,</span><br><span class="line">    introduce: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">console</span>.log(getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">me.introduce()</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure></p>
+<p>如果想要规避这个错误，必须这样：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> me = &#123;</span><br><span class="line">    name: <span class="string">"carol"</span>,</span><br><span class="line">    introduce: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> that = <span class="keyword">this</span>;    <span class="comment">// 将this的值赋予一个普通变量，该变量遵从词法作用域</span></span><br><span class="line">        <span class="keyword">let</span> getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> that.name;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">console</span>.log(getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">me.introduce();</span><br><span class="line"><span class="comment">// carol</span></span><br></pre></td></tr></table></figure></p>
+<p>而箭头函数因为自动绑定了定义时的上下文，不用这样的hack也可以轻松访问到对象<code>me</code>的<code>this</code>。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> me = &#123;</span><br><span class="line">    name: <span class="string">"carol"</span>,</span><br><span class="line">    introduce: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> getName = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">console</span>.log(getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">me.introduce();</span><br><span class="line"><span class="comment">// carol</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="箭头函数的缺点"><a href="#箭头函数的缺点" class="headerlink" title="箭头函数的缺点"></a>箭头函数的缺点</h3><p>普通函数的「<code>this</code>在运行时确定」这一原则，使得它可以完成开头的例子那样的功能，这一点箭头函数是做不到的，因为它的<code>this</code>在一开始就被定好了。</p>
+<h3 id="如何选择"><a href="#如何选择" class="headerlink" title="如何选择"></a>如何选择</h3><p>如果这个函数不存在以后通过<code>call</code>/<code>apply</code>改变其作用域的可能，也不是定义在某个Function的原型上面预备被其他的实例调用(如开头的例子)，那么就用箭头函数。</p>
+<p>否则的话，普通的函数我们普通地用～～～</p>
+<h3 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h3><p>「箭头函数」这个名字听起来真是比「lambda表达式」自降气场啊。</p>
+<hr>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ol>
+<li><a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001438565969057627e5435793645b7acaee3b6869d1374000#0" target="_blank" rel="noopener">箭头函数 - 廖雪峰的官方网站</a></li>
+<li><a href="https://github.com/zhengweikeng/blog/blob/master/posts/2016/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E4%B8%ADthis%E7%9A%84%E7%94%A8%E6%B3%95.md" target="_blank" rel="noopener">箭头函数中this的用法.md</a></li>
+<li><a href="https://segmentfault.com/q/1010000006683698" target="_blank" rel="noopener">箭头函数中的this问题 - SegmentFault</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="//carolunar.com/2017/07/08/spark-shakespeare/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1668,165 +1828,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="//carolunar.com/2017/04/04/poj-1258-agri-net/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Carolunar">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/blogImg/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Carol的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/04/04/poj-1258-agri-net/" itemprop="url">POJ 1258 Agri-Net 题解 Prim 最小生成树</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-04T19:25:11+08:00">
-                2017-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/最小生成树/" itemprop="url" rel="index">
-                    <span itemprop="name">最小生成树</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><a href="http://poj.org/problem?id=1258" target="_blank" rel="noopener">POJ 1258 Agri-Net</a></p>
-<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>FJ 当市长了，他的政治宣言之一就是让所有奶牛都用上互联网。求出连接所有农场的最小花费。</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>求最小生成树，用 Prim 算法。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/04/04/poj-1258-agri-net/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1881,7 +1882,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1892,7 +1893,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1903,7 +1904,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
